@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Finder Travel — Agência de Viagens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--p1:#6d28d9;--p2:#4c1d95;--p3:#2e1065;--p4:#7c3aed;--pl:#c4b5fd;--green:#c8ff00;--gdark:#a3cc00;--white:#fff;--tb:rgba(255,255,255,.95);--tm:rgba(255,255,255,.78);--tf:rgba(255,255,255,.5);--cb:rgba(255,255,255,.1);--cbr:rgba(255,255,255,.2)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--p2);color:var(--tb);overflow-x:hidden;font-size:15px;line-height:1.7}
+img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--p3)}::-webkit-scrollbar-thumb{background:var(--green);border-radius:2px}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+/* MARQUEE */
+.mq{background:var(--green);overflow:hidden;padding:9px 0;position:fixed;top:0;left:0;right:0;z-index:1001;}
+.mq-t{display:flex;width:max-content;animation:mqs 22s linear infinite}
+.mq-t span{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--p3);padding:0 26px;white-space:nowrap}
+.mq-t span::after{content:' ✈'}
+@keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* NAVBAR */
+.nb{position:fixed;top:46px;left:50%;transform:translateX(-50%);z-index:1000;display:flex;align-items:center;justify-content:space-between;width:min(1080px,94vw);padding:14px 24px;background:rgba(76,29,149,.85);backdrop-filter:blur(20px);border:1px solid rgba(196,181,253,.3);border-radius:100px;transition:all .3s}
+.nb.s{background:rgba(46,16,101,.97);border-color:rgba(200,255,0,.4);box-shadow:0 8px 40px rgba(0,0,0,.35)}
+.nb-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.nb-ul{display:flex;list-style:none;gap:28px}
+.nb-ul a{font-size:13px;font-weight:500;color:rgba(255,255,255,.85);transition:color .2s}
+.nb-ul a:hover{color:var(--green)}
+.nb-btn{background:var(--green);color:var(--p3);font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;padding:11px 24px;border-radius:100px;transition:transform .25s,box-shadow .25s;white-space:nowrap}
+.nb-btn:hover{transform:scale(1.05);box-shadow:0 0 24px rgba(200,255,0,.5)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px}
+/* MOBILE MENU */
+.mm{display:none;position:fixed;inset:0;z-index:999;background:var(--p3);flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.mm.o{display:flex}
+.mm a{font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--white);transition:color .2s}
+.mm a:hover{color:var(--green)}
+.mm-x{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--white);font-size:26px;cursor:pointer}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px 24px 80px;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--p3) 0%,var(--p2) 45%,var(--p1) 100%)}
+
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(46,16,101,.72) 0%,rgba(76,29,149,.65) 45%,rgba(109,40,217,.6) 100%);pointer-events:none;z-index:1}
+.hero::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.4) 0%,transparent 70%);top:-200px;left:-150px;pointer-events:none;z-index:2}
+.hero::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,.1) 0%,transparent 70%);bottom:-100px;right:-100px;pointer-events:none;z-index:2}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(196,181,253,.18) 1px,transparent 1px);background-size:36px 36px;pointer-events:none;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);z-index:3}
+.hc{position:relative;z-index:4;width:100%;max-width:860px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(200,255,0,.15);border:1px solid rgba(200,255,0,.4);border-radius:100px;padding:8px 20px;font-size:11px;font-weight:700;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px}
+.h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(42px,7vw,88px);line-height:.95;letter-spacing:-.025em;text-transform:uppercase;margin-bottom:20px;color:var(--white);text-align:center;animation:fu .75s .08s ease both}
+.h1 .ac{color:var(--green);display:block;text-align:center}
+.sub{font-size:clamp(15px,1.8vw,17px);font-weight:400;color:var(--tb);line-height:1.8;max-width:520px;margin:0 auto 40px;text-align:center;animation:fu .75s .16s ease both}
+.ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fu .75s .24s ease both}
+.btn-g{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:var(--p3);font-family:'Syne',sans-serif;font-weight:700;font-size:14px;letter-spacing:.05em;padding:16px 34px;border-radius:100px;transition:transform .3s,box-shadow .3s;border:none;cursor:pointer}
+.btn-g:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 40px rgba(200,255,0,.45)}
+.btn-o{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--white);font-family:'Syne',sans-serif;font-weight:600;font-size:14px;letter-spacing:.05em;padding:16px 34px;border-radius:100px;border:1.5px solid rgba(255,255,255,.4);transition:all .3s;cursor:pointer}
+.btn-o:hover{border-color:var(--green);background:rgba(200,255,0,.1)}
+.stats{display:flex;gap:48px;justify-content:center;margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,.2);flex-wrap:wrap;animation:fu .75s .32s ease both}
+.sn{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:var(--green);line-height:1;display:block}
+.sl{font-size:12px;color:var(--tb);letter-spacing:.08em;text-transform:uppercase;margin-top:6px;font-weight:500}
+.scrl{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;color:rgba(255,255,255,.4);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.scrl-l{width:1px;height:36px;background:linear-gradient(to bottom,var(--pl),transparent);animation:ld 1.8s ease-in-out infinite}
+@keyframes ld{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+/* GALLERY */
+.gw{background:var(--p3);padding:60px 0;overflow:hidden;border-top:3px solid var(--green)}
+.gh{text-align:center;padding:0 24px;margin-bottom:36px}
+.gt{display:flex;gap:14px;width:max-content;animation:gtm 28s linear infinite}
+.gt:hover{animation-play-state:paused}
+.gcd:hover ~ .gcd{opacity:.85}
+@keyframes gtm{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.gcd{
+  width:260px;height:190px;border-radius:12px;
+  overflow:hidden;flex-shrink:0;position:relative;
+  isolation:isolate;cursor:pointer;
+  transition:transform .5s cubic-bezier(.175,.885,.32,1.275),
+             box-shadow .5s ease,
+             border-radius .5s ease;
+}
+.gcd:hover{
+  transform:scale(1.08) translateY(-8px);
+  box-shadow:0 24px 50px rgba(0,0,0,.5), 0 0 0 2px var(--green);
+  border-radius:18px;
+  z-index:10;
+}
+.gcd img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.175,.885,.32,1.275),
+             filter .5s ease,
+             brightness .5s ease;
+  filter:brightness(.9);
+}
+.gcd:hover img{
+  transform:scale(1.12);
+  filter:brightness(1.1) saturate(1.2);
+}
+.gcd-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(30,0,61,.85) 0%,transparent 55%);
+  transition:opacity .4s ease;
+  opacity:.7;
+}
+.gcd:hover .gcd-overlay{opacity:1}
+.gcd-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 50%);
+  opacity:0;
+  transition:opacity .4s ease;
+}
+.gcd:hover .gcd-shine{opacity:1}
+.gcl{position:absolute;bottom:10px;left:10px;right:10px;background:rgba(46,16,101,.92);backdrop-filter:blur(8px);border:1px solid rgba(196,181,253,.3);border-radius:8px;padding:6px 12px;font-size:11px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 20px)}
+/* SHARED */
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,50px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:16px;color:var(--white)}
+.h2 .g{color:var(--green)}
+.ld{font-size:15px;color:var(--tb);line-height:1.8;max-width:540px}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+/* STEPS */
+.step-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px}
+.step-num{font-family:'Syne',sans-serif;font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.step-title{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:10px;color:var(--white)}
+.step-desc{font-size:14px;color:var(--tb);line-height:1.8}
+/* DEST CARDS */
+.dest-card{background:var(--cb);border:1px solid var(--cbr);border-radius:16px;padding:22px;cursor:pointer;transition:all .3s;text-align:center}
+.dest-card:hover{border-color:rgba(200,255,0,.5);background:rgba(200,255,0,.1);transform:translateY(-4px);box-shadow:0 12px 36px rgba(124,58,237,.3)}
+.dest-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:4px;color:var(--white)}
+.dest-sub{font-size:12px;color:var(--tb);margin-bottom:12px}
+.dest-cta{font-size:11px;font-weight:700;color:var(--green);letter-spacing:.08em}
+/* SERVICES */
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+.svc{background:var(--cb);border:1px solid var(--cbr);border-radius:20px;padding:36px 28px;transition:all .35s;position:relative;overflow:hidden}
+.svc::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p4),var(--green));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.svc:hover{transform:translateY(-5px);border-color:rgba(200,255,0,.4);background:rgba(124,58,237,.2)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-ic{width:54px;height:54px;border-radius:14px;background:rgba(200,255,0,.12);border:1px solid rgba(200,255,0,.3);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px}
+.svc-t{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:10px;color:var(--white)}
+.svc-d{font-size:13.5px;color:var(--tb);line-height:1.8;margin-bottom:18px}
+.svc-a{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--green);transition:gap .2s}
+.svc-a:hover{gap:9px}
+/* BENTO */
+.bn{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:12px;margin-top:48px}
+.bc{border-radius:20px;overflow:hidden;position:relative;cursor:pointer}
+.bc img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
+.bc:hover img{transform:scale(1.08)}
+.bci{position:absolute;inset:0;background:linear-gradient(to top,rgba(46,16,101,.92) 0%,rgba(46,16,101,.3) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:18px;opacity:.9;transition:opacity .3s}
+.bc:hover .bci{opacity:1}
+.bcn{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--white)}
+.bcs{font-size:10px;font-weight:600;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+.bc.w{grid-column:span 2}.bc.t{grid-row:span 2}
+/* WHY */
+.wi{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.wim{position:relative;height:480px}
+.wia{width:68%;height:82%;object-fit:cover;border-radius:28px;position:absolute;top:0;right:0;border:1px solid rgba(196,181,253,.25)}
+.wib{width:52%;height:55%;object-fit:cover;border-radius:20px;position:absolute;bottom:0;left:0;border:2.5px solid var(--green);box-shadow:0 0 36px rgba(200,255,0,.25)}
+.wbdg{position:absolute;top:42%;left:42%;transform:translate(-50%,-50%);background:var(--green);color:var(--p3);font-family:'Syne',sans-serif;font-weight:800;font-size:12px;letter-spacing:.05em;padding:14px 18px;border-radius:16px;text-align:center;z-index:3;box-shadow:0 0 36px rgba(200,255,0,.35);white-space:nowrap}
+.wbdg big{display:block;font-size:26px;line-height:1;margin-bottom:2px}
+.fl{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:28px}
+.fi{display:flex;align-items:flex-start;gap:14px;background:var(--cb);border:1px solid var(--cbr);border-radius:12px;padding:18px;transition:all .3s}
+.fi:hover{border-color:rgba(200,255,0,.4);background:rgba(200,255,0,.08)}
+.fic{width:42px;height:42px;flex-shrink:0;border-radius:12px;background:rgba(200,255,0,.12);border:1px solid rgba(200,255,0,.3);display:flex;align-items:center;justify-content:center;font-size:18px}
+.fit{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:4px;color:var(--white)}
+.fid{font-size:13px;color:var(--tb);line-height:1.7}
+/* TESTIMONIALS */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.tc{background:var(--cb);border:1px solid var(--cbr);border-radius:20px;padding:28px;transition:all .35s}
+.tc:hover{transform:translateY(-5px);border-color:rgba(196,181,253,.5)}
+.tcs{color:var(--green);font-size:13px;letter-spacing:3px;margin-bottom:14px}
+.tct{font-size:14px;color:var(--tb);line-height:1.8;margin-bottom:22px;font-style:italic}
+.tca{display:flex;align-items:center;gap:12px}
+.tcav{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--p4)}
+.tcn{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--white)}
+.tcd{font-size:11px;color:var(--green);margin-top:2px;font-weight:600}
+.avs{display:flex;align-items:center;justify-content:center;margin-top:40px}
+.avs img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2.5px solid var(--p2);margin-left:-10px;transition:transform .25s}
+.avs img:first-child{margin-left:0}
+.avs img:hover{transform:scale(1.18);z-index:9}
+.avt{margin-left:14px;font-size:13px;color:var(--tb)}
+.avt strong{color:var(--green)}
+/* PACKAGES */
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.pc{background:var(--cb);border:1px solid var(--cbr);border-radius:20px;padding:32px 26px;position:relative;text-align:left;transition:all .35s;overflow:hidden}
+.pc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p4),var(--green));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.pc:hover{transform:translateY(-6px);border-color:rgba(196,181,253,.5)}
+.pc:hover::after{transform:scaleX(1)}
+.pc.hot{border-color:var(--green);background:rgba(200,255,0,.07)}
+.pc.hot::after{transform:scaleX(1);background:var(--green)}
+.pbdg{display:inline-block;background:var(--green);color:var(--p3);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:16px}
+.pn{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;margin-bottom:6px;color:var(--white)}
+.pd{font-size:13px;color:var(--tb);margin-bottom:20px;line-height:1.6}
+.pf{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.pf li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--tb)}
+.pf li::before{content:'✓';color:var(--green);font-weight:700;font-size:12px;flex-shrink:0}
+/* CTA */
+.cs{padding:96px 24px;background:linear-gradient(135deg,var(--p2) 0%,var(--p1) 50%,var(--p2) 100%);text-align:center;position:relative;overflow:hidden}
+.cs::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.35) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cin{position:relative;z-index:2;max-width:660px;margin:0 auto}
+.ch2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,5vw,62px);letter-spacing:-.025em;text-transform:uppercase;line-height:.95;margin-bottom:20px;color:var(--white)}
+.ch2 .g{color:var(--green)}
+.cp{font-size:16px;color:var(--tb);line-height:1.8;margin-bottom:36px;max-width:460px;margin-left:auto;margin-right:auto}
+.wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;letter-spacing:.05em;padding:18px 42px;border-radius:100px;transition:all .3s;box-shadow:0 8px 36px rgba(37,211,102,.3)}
+.wa:hover{transform:scale(1.06) translateY(-3px);box-shadow:0 16px 56px rgba(37,211,102,.5)}
+.wa svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
+.cn{margin-top:16px;font-size:12px;color:var(--tf);letter-spacing:.06em}
+/* FOOTER */
+.fw{background:var(--p3);border-top:1px solid rgba(255,255,255,.12);padding:64px 0 28px;position:relative;overflow:hidden}
+.fw-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1400&q=80');background-size:cover;background-position:center 40%;opacity:.1;pointer-events:none;z-index:0}
+.fw .wrap{position:relative;z-index:1}
+.fgd{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.fbn{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;margin-bottom:14px;color:var(--white)}
+.fbn span{color:var(--green)}
+.fb p{font-size:13.5px;color:var(--tb);line-height:1.8;max-width:270px;margin-bottom:22px}
+.socs{display:flex;gap:10px}
+.soc{width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:all .2s}
+.soc:hover{border-color:var(--green);color:var(--green);background:rgba(200,255,0,.08)}
+.fc h4{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--white);margin-bottom:16px}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fc a{font-size:13.5px;color:var(--tb);transition:color .2s}
+.fc a:hover{color:var(--green)}
+.fb2{display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:var(--tf);flex-wrap:wrap;gap:10px}
+/* RESPONSIVE */
+@media(max-width:1024px){.sg{grid-template-columns:repeat(2,1fr)}.wi{grid-template-columns:1fr}.wim{height:300px;order:-1}.fgd{grid-template-columns:1fr 1fr}.fb{grid-column:1/-1}.tg{grid-template-columns:1fr 1fr}.pg{grid-template-columns:1fr 1fr}.stats{gap:32px}}
+@media(max-width:768px){.nb-ul,.nb-btn{display:none}.hbg{display:flex}.bn{grid-template-columns:1fr 1fr;grid-auto-rows:155px}.bc.w{grid-column:span 2}.bc.t{grid-row:span 1}.tg{grid-template-columns:1fr}.pg{grid-template-columns:1fr}.steps-grid{grid-template-columns:1fr!important;gap:40px!important}.step-connector{display:none!important}.dest-grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:520px){body{font-size:14px}.bn{grid-template-columns:1fr;grid-auto-rows:200px}.bc.w{grid-column:span 1}.sg{grid-template-columns:1fr}.fgd{grid-template-columns:1fr}.stats{gap:20px}.wim{height:260px}.dest-grid{grid-template-columns:repeat(2,1fr)!important}}
+
+
+/* ── NUVENS ANIMADAS ── */
+.clouds-wrap{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.cloud{position:absolute;background:rgba(255,255,255,0.07);border-radius:50px;filter:blur(8px)}
+.cloud::before,.cloud::after{content:'';position:absolute;background:inherit;border-radius:50%}
+
+.cloud-1{width:280px;height:70px;top:15%;left:-300px;animation:cloudMove1 28s linear infinite}
+.cloud-1::before{width:120px;height:90px;top:-40px;left:40px}
+.cloud-1::after{width:90px;height:75px;top:-30px;left:130px}
+
+.cloud-2{width:380px;height:80px;top:35%;left:-420px;animation:cloudMove1 38s linear infinite;animation-delay:-12s;background:rgba(255,255,255,0.05)}
+.cloud-2::before{width:160px;height:100px;top:-50px;left:60px}
+.cloud-2::after{width:120px;height:85px;top:-35px;left:180px}
+
+.cloud-3{width:220px;height:55px;top:60%;left:-260px;animation:cloudMove1 22s linear infinite;animation-delay:-6s;background:rgba(200,255,0,0.04)}
+.cloud-3::before{width:100px;height:70px;top:-35px;left:30px}
+.cloud-3::after{width:80px;height:60px;top:-25px;left:110px}
+
+.cloud-4{width:320px;height:75px;top:20%;left:-360px;animation:cloudMove1 32s linear infinite;animation-delay:-20s}
+.cloud-4::before{width:140px;height:95px;top:-45px;left:50px}
+.cloud-4::after{width:100px;height:80px;top:-30px;left:160px}
+
+.cloud-5{width:200px;height:50px;top:75%;left:-240px;animation:cloudMove1 18s linear infinite;animation-delay:-9s;background:rgba(255,255,255,0.06)}
+.cloud-5::before{width:90px;height:65px;top:-30px;left:25px}
+.cloud-5::after{width:70px;height:55px;top:-20px;left:100px}
+
+.cloud-6{width:420px;height:90px;top:45%;left:-460px;animation:cloudMove1 45s linear infinite;animation-delay:-30s;background:rgba(255,255,255,0.04)}
+.cloud-6::before{width:180px;height:110px;top:-55px;left:70px}
+.cloud-6::after{width:140px;height:90px;top:-40px;left:200px}
+
+.cloud-7{width:250px;height:60px;top:8%;left:-290px;animation:cloudMove1 25s linear infinite;animation-delay:-4s;background:rgba(200,255,0,0.03)}
+.cloud-7::before{width:110px;height:80px;top:-38px;left:35px}
+.cloud-7::after{width:85px;height:65px;top:-28px;left:125px}
+
+@keyframes cloudMove1{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(calc(100vw + 500px))}
+}
+
+
+/* ── CARDS DE SERVIÇO COM IMAGEM ── */
+.svc-img{padding:0 !important;overflow:hidden}
+.svc-thumb{width:100%;height:180px;overflow:hidden;position:relative;flex-shrink:0}
+.svc-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.svc-img:hover .svc-thumb img{transform:scale(1.08)}
+.svc-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(46,16,101,.85) 100%)}
+.svc-body{padding:24px 28px 28px}
+.svc-body .svc-ic{margin-bottom:14px}
+
+
+/* ── CARDS DESTINO COM IMAGEM ── */
+.dest-img{
+  background-size:cover;
+  background-position:center;
+  height:220px;
+  position:relative;
+  overflow:hidden;
+  padding:0 !important;
+  border:none !important;
+}
+.dest-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(30,0,61,.92) 0%,rgba(30,0,61,.5) 50%,rgba(30,0,61,.2) 100%);
+  transition:background .4s;
+}
+.dest-img:hover .dest-img-overlay{
+  background:linear-gradient(to top,rgba(30,0,61,.95) 0%,rgba(109,40,217,.5) 50%,rgba(109,40,217,.15) 100%);
+}
+.dest-img:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 20px 50px rgba(200,255,0,.25) !important;
+  border:1px solid rgba(200,255,0,.4) !important;
+}
+.dest-content{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:20px;
+  z-index:2;
+}
+.dest-img .dest-name{color:#fff;font-size:16px}
+.dest-img .dest-sub{color:rgba(255,255,255,.8);font-size:12px}
+.dest-img .dest-cta{color:var(--green);font-size:11px;font-weight:700;letter-spacing:.08em;margin-top:8px;display:block}
+/* zoom na imagem no hover */
+.dest-img{background-repeat:no-repeat}
+.dest-img::before{content:'';position:absolute;inset:0;background:inherit;background-size:cover;background-position:center;transition:transform .6s ease;z-index:0}
+.dest-img:hover::before{transform:scale(1.08)}
+
+/* ── ANIMAÇÕES & EFEITOS VISUAIS ── */
+
+/* Partículas flutuantes no hero */
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:.6}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
+@keyframes fadeInLeft{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeInRight{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
+@keyframes zoomIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(200,255,0,.3)}50%{box-shadow:0 0 50px rgba(200,255,0,.7),0 0 80px rgba(200,255,0,.3)}}
+@keyframes borderGlow{0%,100%{border-color:rgba(200,255,0,.3)}50%{border-color:rgba(200,255,0,.9)}}
+@keyframes countUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInUp{from{opacity:0;transform:translateY(80px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rotateSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes wave{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.05)}}
+
+/* Hero partículas */
+.particle{position:absolute;border-radius:50%;pointer-events:none;animation:floatUp linear infinite}
+.p1{width:4px;height:4px;background:var(--green);left:10%;animation-duration:8s;animation-delay:0s;opacity:.7}
+.p2{width:3px;height:3px;background:var(--pl);left:25%;animation-duration:12s;animation-delay:2s;opacity:.5}
+.p3{width:5px;height:5px;background:var(--green);left:40%;animation-duration:9s;animation-delay:4s;opacity:.6}
+.p4{width:2px;height:2px;background:#fff;left:55%;animation-duration:11s;animation-delay:1s;opacity:.4}
+.p5{width:4px;height:4px;background:var(--pl);left:70%;animation-duration:10s;animation-delay:3s;opacity:.5}
+.p6{width:3px;height:3px;background:var(--green);left:85%;animation-duration:7s;animation-delay:5s;opacity:.7}
+.p7{width:2px;height:2px;background:#fff;left:15%;animation-duration:13s;animation-delay:6s;opacity:.3}
+.p8{width:4px;height:4px;background:var(--pl);left:90%;animation-duration:8s;animation-delay:2.5s;opacity:.5}
+
+
+/* Pill animada */
+
+
+/* H1 shimmer */
+.h1 .ac{color:var(--green)}
+
+/* Botão principal brilho */
+.btn-g{position:relative;overflow:hidden}
+.btn-g::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:btnShine 3s ease-in-out infinite}
+@keyframes btnShine{0%,70%{left:-100%}100%{left:200%}}
+
+/* Stats counter animado */
+.sn{animation:countUp .8s ease both}
+
+/* Cards serviço hover melhorado */
+.svc{transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .3s,background .3s,box-shadow .3s}
+.svc:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 60px rgba(124,58,237,.4)}
+
+/* Bento cards */
+.bc{transition:transform .4s cubic-bezier(.175,.885,.32,1.275),box-shadow .4s}
+.bc:hover{transform:scale(1.04);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+
+/* Feature items */
+.fi{transition:transform .3s ease,border-color .3s,background .3s,box-shadow .3s}
+.fi:hover{transform:translateX(8px);box-shadow:0 8px 30px rgba(200,255,0,.15)}
+
+/* Testimonial cards */
+.tc{transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .3s,box-shadow .3s}
+.tc:hover{transform:translateY(-8px) rotate(.5deg);box-shadow:0 24px 60px rgba(124,58,237,.3)}
+
+/* Package cards */
+.pc{transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .3s,box-shadow .3s}
+.pc:hover{transform:translateY(-10px);box-shadow:0 24px 60px rgba(124,58,237,.35)}
+.pc.hot{animation:borderGlow 2.5s ease-in-out infinite}
+
+/* Dest cards */
+.dest-card{transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .3s,box-shadow .3s}
+.dest-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 50px rgba(200,255,0,.2)}
+
+/* Marquee gradient edges */
+.mq{-webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
+
+/* Nav glow ao scroll */
+.nb.s{box-shadow:0 8px 40px rgba(0,0,0,.4),0 0 60px rgba(124,58,237,.15)}
+
+/* Reveal animações variadas */
+.rv:nth-child(odd){transition:opacity .7s ease,transform .7s ease}
+.rv:nth-child(even){transition:opacity .7s .1s ease,transform .7s .1s ease}
+
+/* Seção titulo animado */
+.tag{position:relative;display:inline-block}
+.tag::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.rv.on .tag::after{transform:scaleX(1);transition-delay:.3s}
+
+/* CTA section animação */
+.wa{position:relative;overflow:hidden}
+.wa::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:btnShine 2.5s ease-in-out infinite}
+
+/* Footer links hover */
+.fc a{position:relative;display:inline-block}
+.fc a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--green);transition:width .3s ease}
+.fc a:hover::after{width:100%}
+
+/* Step icons pulse */
+.step-icon{transition:transform .3s ease,box-shadow .3s ease}
+.rv.on .step-icon{animation:glowPulse 3s ease-in-out 1s infinite}
+
+/* Scroll indicator */
+.scrl{animation:fu 1s .8s ease both}
+.scrl-l{animation:ld 1.8s ease-in-out infinite}
+
+/* Avatar group hover */
+.avs img{transition:transform .3s cubic-bezier(.175,.885,.32,1.275)}
+
+/* Gallery pause on hover message */
+.gw{cursor:default}
+
+/* Número das stats brilhando */
+.sn{text-shadow:0 0 20px rgba(200,255,0,.5)}
+
+/* Gradiente animado no h2 hero */
+@keyframes heroTitlePulse{0%,100%{text-shadow:0 0 40px rgba(255,255,255,.1)}50%{text-shadow:0 0 60px rgba(255,255,255,.2)}}
+.h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(42px,7vw,88px);line-height:.95;letter-spacing:-.025em;text-transform:uppercase;margin-bottom:20px;color:var(--white);text-align:center}
+
+@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+</style>
+</head>
+<body>
+<div class="mq" aria-hidden="true"><div class="mq-t"><span>Passagens Aéreas</span><span>Hospedagens</span><span>Seguro Viagem</span><span>+3.000 Emissões</span><span>Consultoria Gratuita</span><span>Suporte 24h</span><span>Agência Certificada</span><span>Melhor Custo-Benefício</span><span>Passagens Aéreas</span><span>Hospedagens</span><span>Seguro Viagem</span><span>+3.000 Emissões</span><span>Consultoria Gratuita</span><span>Suporte 24h</span><span>Agência Certificada</span><span>Melhor Custo-Benefício</span></div></div>
+<nav class="nb" id="nav">
+  <a href="#" class="nb-logo">AGÊNCIA DE VIAGENS</a>
+  <ul class="nb-ul"><li><a href="#sv">Serviços</a></li><li><a href="#ds">Destinos</a></li><li><a href="#wn">Por que nós</a></li><li><a href="#pk">Pacotes</a></li><li><a href="#dp">Clientes</a></li></ul>
+  <a href="https://wa.me/5500000000000" class="nb-btn" target="_blank">Falar Agora ✈</a>
+  <button class="hbg" onclick="openM()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mm" id="mm"><button class="mm-x" onclick="closeM()">✕</button><a href="#sv" onclick="closeM()">Serviços</a><a href="#ds" onclick="closeM()">Destinos</a><a href="#wn" onclick="closeM()">Por que nós</a><a href="#pk" onclick="closeM()">Pacotes</a><a href="#dp" onclick="closeM()">Clientes</a><a href="https://wa.me/5500000000000" target="_blank" style="color:var(--green)">WhatsApp ✈</a></div>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  
+  <div class="hero-overlay"></div>
+  <div class="clouds-wrap">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+    <div class="cloud cloud-5"></div>
+    <div class="cloud cloud-6"></div>
+    <div class="cloud cloud-7"></div>
+  </div>
+  <div class="hero-dots"></div>
+  <div class="particle p1" style="bottom:-10px"></div>
+  <div class="particle p2" style="bottom:-10px"></div>
+  <div class="particle p3" style="bottom:-10px"></div>
+  <div class="particle p4" style="bottom:-10px"></div>
+  <div class="particle p5" style="bottom:-10px"></div>
+  <div class="particle p6" style="bottom:-10px"></div>
+  <div class="particle p7" style="bottom:-10px"></div>
+  <div class="particle p8" style="bottom:-10px"></div>
+  <div class="hc">
+    <div class="pill">✈ Agência Certificada na Cadastur</div>
+    <h1 class="h1">FINDER<br/><span class="ac">TRAVEL</span></h1>
+    <p class="sub">Do planejamento ao retorno, estamos com você em cada etapa. Consultoria gratuita, melhores preços e acompanhamento 24 horas.</p>
+    <div class="ctas">
+      <a href="https://wa.me/5500000000000" class="btn-g" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultoria Gratuita</a>
+      <a href="#sv" class="btn-o">Nossos Serviços →</a>
+    </div>
+    <div class="stats">
+      <div><span class="sn" data-target="3000" data-suffix="+">0</span><span class="sl">Emissões Realizadas</span></div>
+      <div><span class="sn" data-target="5">0</span><span class="sl">Serviços em Viagens</span></div>
+      <div><span class="sn" data-target="24" data-suffix="h">0</span><span class="sl">Horas de Suporte</span></div>
+      <div><span class="sn" data-target="100" data-suffix="%">0</span><span class="sl">Clientes Satisfeitos</span></div>
+    </div>
+  </div>
+  <div class="scrl"><div class="scrl-l"></div>scroll</div>
+</section>
+<!-- GALLERY logo após hero -->
+<div class="gw">
+  <div class="gh rv">
+    <span class="tag">Galeria de Destinos</span>
+    <h2 class="h2">Momentos <span class="g">Inesquecíveis</span></h2>
+  </div>
+  <div class="gt"><div class="gcd" onclick="openDestModal('Rio de Janeiro, Brasil')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=500&q=80" alt="Rio de Janeiro" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Rio de Janeiro, Brasil</div></div><div class="gcd" onclick="openDestModal('Maldivas')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldivas" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Maldivas</div></div><div class="gcd" onclick="openDestModal('Paris, França')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Paris, França</div></div><div class="gcd" onclick="openDestModal('Tóquio, Japão')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Tóquio" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Tóquio, Japão</div></div><div class="gcd" onclick="openDestModal('Dubai, EAU')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Dubai, EAU</div></div><div class="gcd" onclick="openDestModal('Santorini, Grécia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=500&q=80" alt="Santorini" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Santorini, Grécia</div></div><div class="gcd" onclick="openDestModal('Cancún, México')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80" alt="Cancún" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Cancún, México</div></div><div class="gcd" onclick="openDestModal('Fernando de Noronha')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80" alt="Fernando de Noronha" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Fernando de Noronha</div></div><div class="gcd" onclick="openDestModal('Buenos Aires, Argentina')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=500&q=80" alt="Buenos Aires" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Buenos Aires, Argentina</div></div><div class="gcd" onclick="openDestModal('Bali, Indonésia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Bali, Indonésia</div></div><div class="gcd" onclick="openDestModal('Rio de Janeiro, Brasil')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=500&q=80" alt="Rio de Janeiro" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Rio de Janeiro, Brasil</div></div><div class="gcd" onclick="openDestModal('Maldivas')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldivas" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Maldivas</div></div><div class="gcd" onclick="openDestModal('Paris, França')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Paris, França</div></div><div class="gcd" onclick="openDestModal('Tóquio, Japão')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Tóquio" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Tóquio, Japão</div></div><div class="gcd" onclick="openDestModal('Dubai, EAU')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Dubai, EAU</div></div><div class="gcd" onclick="openDestModal('Santorini, Grécia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=500&q=80" alt="Santorini" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Santorini, Grécia</div></div><div class="gcd" onclick="openDestModal('Cancún, México')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80" alt="Cancún" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Cancún, México</div></div><div class="gcd" onclick="openDestModal('Fernando de Noronha')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80" alt="Fernando de Noronha" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Fernando de Noronha</div></div><div class="gcd" onclick="openDestModal('Buenos Aires, Argentina')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=500&q=80" alt="Buenos Aires" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Buenos Aires, Argentina</div></div><div class="gcd" onclick="openDestModal('Bali, Indonésia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Bali, Indonésia</div></div></div>
+</div>
+<!-- COMO FUNCIONA -->
+<section style="background:var(--p3);padding:96px 0">
+  <div class="wrap">
+    <div style="text-align:center" class="rv"><span class="tag">Como Funciona</span><h2 class="h2">Simples assim,<br/><span class="g">em 3 passos</span></h2><p class="ld" style="margin:14px auto 0">Da consulta à decolagem, cuidamos de tudo por você.</p></div>
+    <div class="rv steps-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;margin:56px 0 72px">
+      <div class="step-connector" style="position:absolute;top:36px;left:calc(16.66% + 20px);right:calc(16.66% + 20px);height:2px;background:linear-gradient(90deg,var(--green),var(--pl));opacity:.4;pointer-events:none"></div>
+      <div style="text-align:center;padding:0 32px"><div class="step-icon" style="background:rgba(200,255,0,.12);border:2px solid var(--green)">💬</div><div class="step-num" style="color:var(--green)">Passo 01</div><div class="step-title">Fale com a gente</div><p class="step-desc">Entre em contato pelo WhatsApp e conte seus planos, destino e orçamento disponível.</p></div>
+      <div style="text-align:center;padding:0 32px"><div class="step-icon" style="background:rgba(124,58,237,.25);border:2px solid var(--pl)">🗺️</div><div class="step-num" style="color:var(--pl)">Passo 02</div><div class="step-title">Receba seu roteiro</div><p class="step-desc">Nossa equipe monta um roteiro personalizado com passagens, hospedagem e seguro.</p></div>
+      <div style="text-align:center;padding:0 32px"><div class="step-icon" style="background:rgba(200,255,0,.12);border:2px solid var(--green)">✈️</div><div class="step-num" style="color:var(--green)">Passo 03</div><div class="step-title">Embarque tranquilo</div><p class="step-desc">Com tudo confirmado, é só desfrutar com nosso suporte 24h durante toda a viagem.</p></div>
+    </div>
+    <div style="text-align:center" class="rv"><span class="tag">Destinos Mais Procurados</span><h2 class="h2">Para onde nossos<br/><span class="g">clientes voam</span></h2></div>
+    <div class="rv dest-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px">
+
+      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80')">
+        <div class="dest-img-overlay"></div>
+        <div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🇧🇷</div><div class="dest-name">Nacional</div><div class="dest-sub">Rio, SP, Nordeste, Sul...</div><div class="dest-cta">CONSULTAR →</div></div>
+      </div>
+
+      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80')">
+        <div class="dest-img-overlay"></div>
+        <div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🌎</div><div class="dest-name">América</div><div class="dest-sub">EUA, Cancún, Buenos Aires...</div><div class="dest-cta">CONSULTAR →</div></div>
+      </div>
+
+      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80')">
+        <div class="dest-img-overlay"></div>
+        <div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🌍</div><div class="dest-name">Europa</div><div class="dest-sub">Paris, Lisboa, Roma...</div><div class="dest-cta">CONSULTAR →</div></div>
+      </div>
+
+      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80')">
+        <div class="dest-img-overlay"></div>
+        <div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🌏</div><div class="dest-name">Ásia & Oriente</div><div class="dest-sub">Dubai, Bali, Tóquio...</div><div class="dest-cta">CONSULTAR →</div></div>
+      </div>
+
+    </div>
+    <div class="rv" style="text-align:center;margin-top:48px"><a href="https://wa.me/5500000000000" class="btn-g" target="_blank" style="font-size:15px;padding:18px 40px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultar meu destino agora</a></div>
+  </div>
+</section>
+<!-- SERVICES -->
+<section style="background:var(--p2);padding:96px 0" id="sv">
+  <div class="wrap"><div style="text-align:center" class="rv"><span class="tag">O que oferecemos</span><h2 class="h2">Nossos <span class="g">Serviços</span></h2><p class="ld" style="margin:12px auto 0">Tudo que você precisa para uma viagem perfeita, em um só lugar.</p></div>
+  <div class="sg rv">
+
+    <div class="svc svc-img">
+      <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="Passagens Aéreas"/></div>
+      <div class="svc-body"><div class="svc-ic">✈️</div><h3 class="svc-t">Passagens Aéreas</h3><p class="svc-d">Nacionais e internacionais com as melhores tarifas. Emissão rápida, segura e com acompanhamento especializado.</p><a href="https://wa.me/5500000000000" class="svc-a" target="_blank">Cotar passagem →</a></div>
+    </div>
+
+    <div class="svc svc-img">
+      <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hospedagens"/></div>
+      <div class="svc-body"><div class="svc-ic">🏨</div><h3 class="svc-t">Hospedagens</h3><p class="svc-d">Hotéis, pousadas e resorts selecionados para cada perfil. Do econômico ao luxuoso, encontramos a opção ideal.</p><a href="https://wa.me/5500000000000" class="svc-a" target="_blank">Ver hospedagens →</a></div>
+    </div>
+
+    <div class="svc svc-img">
+      <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="Seguro Viagem"/></div>
+      <div class="svc-body"><div class="svc-ic">🛡️</div><h3 class="svc-t">Seguro Viagem</h3><p class="svc-d">Viaje com proteção total. Cobertura médica, bagagem e cancelamento para qualquer destino nacional ou internacional.</p><a href="https://wa.me/5500000000000" class="svc-a" target="_blank">Cotar seguro →</a></div>
+    </div>
+
+    <div class="svc svc-img">
+      <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Pacotes Completos"/></div>
+      <div class="svc-body"><div class="svc-ic">🗺️</div><h3 class="svc-t">Pacotes Completos</h3><p class="svc-d">Passagem + hotel + seguro em um pacote único. Planejamos cada detalhe da sua viagem dos sonhos.</p><a href="https://wa.me/5500000000000" class="svc-a" target="_blank">Ver pacotes →</a></div>
+    </div>
+
+    <div class="svc svc-img">
+      <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Consultoria Gratuita"/></div>
+      <div class="svc-body"><div class="svc-ic">💬</div><h3 class="svc-t">Consultoria Gratuita</h3><p class="svc-d">Atendimento personalizado e exclusivo. Nossa equipe planeja a viagem perfeita de acordo com seu orçamento.</p><a href="https://wa.me/5500000000000" class="svc-a" target="_blank">Falar agora →</a></div>
+    </div>
+
+    <div class="svc svc-img">
+      <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80" alt="Suporte 24 Horas"/></div>
+      <div class="svc-body"><div class="svc-ic">📱</div><h3 class="svc-t">Suporte 24 Horas</h3><p class="svc-d">Do planejamento ao retorno, sempre disponíveis. Acompanhamento completo durante toda a sua viagem.</p><a href="https://wa.me/5500000000000" class="svc-a" target="_blank">Entrar em contato →</a></div>
+    </div>
+
+  </div></div>
+</section>
+<!-- DESTINATIONS -->
+<section id="ds" style="background:var(--p3);padding:96px 0">
+  <div class="wrap"><div style="text-align:center" class="rv"><span class="tag">Para onde ir</span><h2 class="h2">Destinos <span class="g">Incríveis</span></h2><p class="ld" style="margin:12px auto 0">Explore os destinos mais desejados do mundo. Cada viagem é uma nova história.</p></div>
+  <div class="bn rv">
+    <div class="bc w t"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80" alt="Rio" loading="lazy"/><div class="bci"><div class="bcn">Rio de Janeiro</div><div class="bcs">Brasil · Nacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="bci"><div class="bcn">Paris</div><div class="bcs">França · Internacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=500&q=80" alt="Dubai" loading="lazy"/><div class="bci"><div class="bcn">Dubai</div><div class="bcs">Emirados · Internacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="bci"><div class="bcn">Bali</div><div class="bcs">Indonésia · Internacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Gramado" loading="lazy"/><div class="bci"><div class="bcn">Gramado</div><div class="bcs">Brasil · Nacional</div></div></div>
+    <div class="bc w"><img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?w=900&q=80" alt="NY" loading="lazy"/><div class="bci"><div class="bcn">Nova York</div><div class="bcs">EUA · Internacional</div></div></div>
+  </div></div>
+</section>
+<!-- WHY US -->
+<section style="background:var(--p2);padding:96px 0" id="wn">
+  <div class="wi">
+    <div class="wim rv"><img class="wia" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80" alt="Avião"/><img class="wib" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Praia"/><div class="wbdg"><big>+3.000</big>VIAGENS REALIZADAS</div></div>
+    <div class="rv"><span class="tag">Por que nos escolher</span><h2 class="h2">Viaje com<br/>quem <span class="g">entende</span></h2><p class="ld" style="margin-top:14px">A Finder Travel nasceu para simplificar cada etapa da sua jornada. Com experiência e dedicação, transformamos sonhos em realidade.</p>
+      <ul class="fl">
+        <li class="fi"><div class="fic">✅</div><div><div class="fit">Atendimento Personalizado</div><div class="fid">Suporte exclusivo para cada etapa da sua viagem, do planejamento ao retorno.</div></div></li>
+        <li class="fi"><div class="fic">💰</div><div><div class="fit">Melhor Custo-Benefício</div><div class="fid">Encontramos as melhores opções para sua viagem dos sonhos caber no orçamento.</div></div></li>
+        <li class="fi"><div class="fic">📱</div><div><div class="fit">Acompanhamento 24h</div><div class="fid">Nossa equipe está disponível a qualquer hora para qualquer emergência.</div></div></li>
+        <li class="fi"><div class="fic">🔒</div><div><div class="fit">Agência Certificada</div><div class="fid">Cadastro ativo. Segurança total em todas as transações e reservas.</div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- TESTIMONIALS -->
+<section style="background:var(--p3);padding:96px 0" id="dp">
+  <div class="wrap"><div style="text-align:center" class="rv"><span class="tag">Depoimentos</span><h2 class="h2">O que nossos <span class="g">Clientes dizem</span></h2></div>
+  <div class="avs rv"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt=""/><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt=""/><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt=""/><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt=""/><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt=""/><div class="avt">Mais de <strong>3.000+</strong> viajantes satisfeitos</div></div>
+  <div class="tg rv">
+    <div class="tc"><div class="tcs">★★★★★</div><p class="tct">"Melhor agência que já usei! Planejaram toda minha viagem para Orlando com minha família. Atendimento impecável do início ao fim, sempre responderam super rápido."</p><div class="tca"><img class="tcav" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt=""/><div><div class="tcn">Ana Carolina S.</div><div class="tcd">✈ Orlando, EUA</div></div></div></div>
+    <div class="tc"><div class="tcs">★★★★★</div><p class="tct">"A Finder Travel tornou minha lua de mel em Maldivas um sonho realizado. Cuidaram de cada detalhe, desde as passagens até o transfer no destino. Recomendo!"</p><div class="tca"><img class="tcav" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt=""/><div><div class="tcn">Rafael & Maria</div><div class="tcd">✈ Maldivas</div></div></div></div>
+    <div class="tc"><div class="tcs">★★★★★</div><p class="tct">"Conseguiram passagens com um preço que não achei em lugar nenhum. O atendimento personalizado faz toda a diferença. Já indiquei para toda minha família!"</p><div class="tca"><img class="tcav" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt=""/><div><div class="tcn">Juliana P.</div><div class="tcd">✈ Lisboa, Portugal</div></div></div></div>
+  </div></div>
+</section>
+<!-- PACKAGES -->
+<section style="background:var(--p2);padding:96px 0;text-align:center" id="pk">
+  <div class="wrap"><div class="rv"><span class="tag">Nossos Pacotes</span><h2 class="h2">Escolha seu <span class="g">Pacote</span></h2><p class="ld" style="margin:12px auto 0">Pacotes personalizados para todo perfil de viajante. Todos com consultoria gratuita incluída.</p></div>
+  <div class="pg rv">
+    <div class="pc"><div class="pn">Explorador</div><div class="pd">Ideal para turismo nacional com praticidade</div><ul class="pf"><li>Passagem aérea nacional</li><li>Hospedagem econômica selecionada</li><li>Seguro viagem básico</li><li>Suporte via WhatsApp</li></ul><a href="https://wa.me/5500000000000" class="btn-o" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
+    <div class="pc hot"><div class="pbdg">Mais Popular</div><div class="pn">Viajante</div><div class="pd">Completo para viagens nacionais e internacionais</div><ul class="pf"><li>Passagem nacional ou internacional</li><li>Hospedagem selecionada por especialistas</li><li>Seguro viagem completo</li><li>Suporte 24h dedicado</li><li>Transfer no destino</li></ul><a href="https://wa.me/5500000000000" class="btn-g" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
+    <div class="pc"><div class="pn">Premium</div><div class="pd">Experiência exclusiva para quem exige o melhor</div><ul class="pf"><li>Passagens internacionais premium</li><li>Hotéis e resorts 4 e 5 estrelas</li><li>Seguro viagem premium total</li><li>Concierge exclusivo 24h</li><li>Roteiro personalizado completo</li></ul><a href="https://wa.me/5500000000000" class="btn-o" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
+  </div></div>
+</section>
+<!-- CTA -->
+<section class="cs"><div class="cin rv"><h2 class="ch2">Pronto para<br/><span class="g">Embarcar?</span></h2><p class="cp">Fale com nossa equipe agora e receba uma consultoria gratuita. Vamos planejar a viagem dos seus sonhos juntos!</p><a href="https://wa.me/5500000000000" class="wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultoria Gratuita pelo WhatsApp</a><p class="cn">Respondemos em até 5 minutos · Sem compromisso · 100% Gratuito</p></div></section>
+<!-- FOOTER -->
+<footer class="fw"><div class="fw-bg"></div><div class="wrap"><div class="fgd">
+  <div class="fb"><div class="fbn">FINDER <span>TRAVEL</span></div><p>Agência de viagens certificada. Transformamos sonhos em realidade com atendimento personalizado, melhores preços e suporte 24 horas.</p><div class="socs"><a class="soc" href="https://instagram.com/agenciafindertravel" target="_blank" title="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="soc" href="https://wa.me/5500000000000" target="_blank" title="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div></div>
+  <div class="fc"><h4>Serviços</h4><ul><li><a href="#">Passagens Aéreas</a></li><li><a href="#">Hospedagens</a></li><li><a href="#">Seguro Viagem</a></li><li><a href="#">Pacotes Completos</a></li><li><a href="#">Consultoria</a></li></ul></div>
+  <div class="fc"><h4>Destinos</h4><ul><li><a href="#">Brasil</a></li><li><a href="#">América do Sul</a></li><li><a href="#">Europa</a></li><li><a href="#">América do Norte</a></li><li><a href="#">Ásia & Oceania</a></li></ul></div>
+  <div class="fc"><h4>Links Úteis</h4><ul><li><a href="https://wa.me/5500000000000" target="_blank">WhatsApp</a></li><li><a href="https://instagram.com/agenciafindertravel" target="_blank">Instagram</a></li><li><a href="#">Grupo de Promoções</a></li><li><a href="#">Solicitar Orçamento</a></li><li><a href="#">Cadastro</a></li></ul></div>
+</div><div class="fb2"><span>© 2025 Finder Travel · Todos os direitos reservados · Cadastro ativo</span><span>Feito com ✈ para viajantes apaixonados</span></div></div></footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>60),{passive:true});
+function openM(){document.getElementById('mm').classList.add('o');document.body.style.overflow='hidden'}
+function closeM(){document.getElementById('mm').classList.remove('o');document.body.style.overflow=''}
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.1,rootMargin:'0px 0px -48px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function countUp(el,t,sfx){const d=1800,s=performance.now();(function tick(n){const p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*t).toLocaleString('pt-BR')+(sfx||'');p<1&&requestAnimationFrame(tick)})(s)}
+const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){countUp(e.target,+e.target.dataset.target,e.target.dataset.suffix||'');co.unobserve(e.target)}})},{threshold:.6});
+document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
+
+// MODAL GALERIA
+var modalData = {"Rio de Janeiro, Brasil": ["https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&q=80", "https://images.unsplash.com/photo-1548963670-c68e52db0e43?w=800&q=80", "https://images.unsplash.com/photo-1594735558559-45e4e8c8c5c3?w=800&q=80", "https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?w=800&q=80", "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&q=80"], "Maldivas": ["https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80", "https://images.unsplash.com/photo-1540202404-d0a196e9f8d3?w=800&q=80", "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80", "https://images.unsplash.com/photo-1621293954908-907159247fc8?w=800&q=80", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"], "Paris, França": ["https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80", "https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=800&q=80", "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80", "https://images.unsplash.com/photo-1471623432079-b009d30b6729?w=800&q=80", "https://images.unsplash.com/photo-1543349689-9a4d426bee8e?w=800&q=80"], "Tóquio, Japão": ["https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80", "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80", "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=80", "https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?w=800&q=80", "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80"], "Dubai, EAU": ["https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80", "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80", "https://images.unsplash.com/photo-1548051290-6b10a3b60ed9?w=800&q=80", "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80", "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=800&q=80"], "Santorini, Grécia": ["https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80", "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80", "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80", "https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&q=80", "https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?w=800&q=80"], "Cancún, México": ["https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80", "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80", "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80"], "Fernando de Noronha": ["https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80", "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80", "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80", "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80", "https://images.unsplash.com/photo-1528543606781-2f6e8759bc09?w=800&q=80"], "Buenos Aires, Argentina": ["https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&q=80", "https://images.unsplash.com/photo-1552432552-06c5b8629b7a?w=800&q=80", "https://images.unsplash.com/photo-1568454537842-d933259bb258?w=800&q=80", "https://images.unsplash.com/photo-1546877625-cb8c71916608?w=800&q=80", "https://images.unsplash.com/photo-1476081718849-3aedb56e6c5e?w=800&q=80"], "Bali, Indonésia": ["https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80", "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80", "https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?w=800&q=80", "https://images.unsplash.com/photo-1518548235786-ca72aa4ee1e6?w=800&q=80", "https://images.unsplash.com/photo-1584810359583-96fc3448beaa?w=800&q=80"]};
+var modalCurrent = 0;
+var modalImgs = [];
+var modalDest = '';
+
+function openDestModal(dest) {
+  modalDest = dest;
+  modalImgs = modalData[dest] || [];
+  modalCurrent = 0;
+  document.getElementById('modal-title').textContent = dest;
+  document.getElementById('modal-tag').textContent = 'DESTINO';
+  document.getElementById('modal-wa').href = 'https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20em%20uma%20viagem%20para%20' + encodeURIComponent(dest) + '.%20Podem%20me%20ajudar?';
+
+  // Thumbnails
+  var thumbs = document.getElementById('modal-thumbs');
+  thumbs.innerHTML = '';
+  modalImgs.forEach(function(url, i) {
+    var t = document.createElement('img');
+    t.src = url;
+    t.id = 'modal-thumb-' + i;
+    t.style.cssText = 'width:80px;height:58px;object-fit:cover;border-radius:10px;cursor:pointer;transition:all .25s;opacity:.6;border:2px solid transparent;flex-shrink:0';
+    t.onclick = function() { setModalImg(i); };
+    t.onmouseover = function() { if(i !== modalCurrent) this.style.opacity = '0.9'; };
+    t.onmouseout = function() { if(i !== modalCurrent) this.style.opacity = '0.6'; };
+    thumbs.appendChild(t);
+  });
+
+  setModalImg(0);
+
+  var modal = document.getElementById('dest-modal');
+  modal.style.display = 'flex';
+  modal.style.animation = 'modalIn .3s ease';
+  document.body.style.overflow = 'hidden';
+}
+
+function setModalImg(idx) {
+  modalCurrent = idx;
+  var img = document.getElementById('modal-main-img');
+  img.style.opacity = '0';
+  setTimeout(function() {
+    img.src = modalImgs[idx];
+    img.style.opacity = '1';
+  }, 150);
+  document.getElementById('modal-counter').textContent = (idx+1) + ' / ' + modalImgs.length;
+
+  // Atualizar thumbs
+  modalImgs.forEach(function(_, i) {
+    var t = document.getElementById('modal-thumb-' + i);
+    if (!t) return;
+    if (i === idx) {
+      t.style.opacity = '1';
+      t.style.border = '2px solid #c8ff00';
+      t.style.transform = 'scale(1.08)';
+    } else {
+      t.style.opacity = '0.6';
+      t.style.border = '2px solid transparent';
+      t.style.transform = 'scale(1)';
+    }
+  });
+}
+
+function modalNext() { setModalImg((modalCurrent + 1) % modalImgs.length); }
+function modalPrev() { setModalImg((modalCurrent - 1 + modalImgs.length) % modalImgs.length); }
+
+function closeDestModal() {
+  document.getElementById('dest-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Fechar ao clicar fora
+document.addEventListener('DOMContentLoaded', function() {
+  var modal = document.getElementById('dest-modal');
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === this) closeDestModal();
+    });
+  }
+});
+
+// Teclado
+document.addEventListener('keydown', function(e) {
+  if (document.getElementById('dest-modal').style.display === 'flex') {
+    if (e.key === 'ArrowRight') modalNext();
+    if (e.key === 'ArrowLeft') modalPrev();
+    if (e.key === 'Escape') closeDestModal();
+  }
+});
+
+</script>
+
+<!-- MODAL GALERIA DESTINO -->
+<div id="dest-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);align-items:center;justify-content:center;flex-direction:column;padding:20px">
+  <div style="width:100%;max-width:900px;position:relative">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <div>
+        <div id="modal-tag" style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#c8ff00;margin-bottom:4px">DESTINO</div>
+        <div id="modal-title" style="font-family:Syne,sans-serif;font-weight:800;font-size:clamp(22px,4vw,36px);color:#fff"></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a id="modal-wa" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-family:Syne,sans-serif;font-weight:700;font-size:13px;padding:10px 20px;border-radius:100px;text-decoration:none;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero ir!
+        </a>
+        <button onclick="closeDestModal()" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">✕</button>
+      </div>
+    </div>
+
+    <!-- Imagem principal -->
+    <div style="position:relative;border-radius:20px;overflow:hidden;height:clamp(240px,45vw,480px);margin-bottom:14px;background:#1e003d">
+      <img id="modal-main-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;transition:opacity .35s ease"/>
+      <!-- Setas -->
+      <button onclick="modalPrev()" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;backdrop-filter:blur(6px);transition:all .2s;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(200,255,0,.3)'" onmouseout="this.style.background='rgba(0,0,0,.5)'">‹</button>
+      <button onclick="modalNext()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;backdrop-filter:blur(6px);transition:all .2s;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(200,255,0,.3)'" onmouseout="this.style.background='rgba(0,0,0,.5)'">›</button>
+      <!-- Contador -->
+      <div id="modal-counter" style="position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;color:#fff"></div>
+    </div>
+
+    <!-- Thumbnails -->
+    <div id="modal-thumbs" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
+  </div>
+</div>
+</body>
+</html>
