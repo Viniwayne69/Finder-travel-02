@@ -78,7 +78,7 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
 .gcl{position:absolute;bottom:10px;left:10px;right:10px;background:rgba(46,16,101,.92);backdrop-filter:blur(8px);border:1px solid rgba(196,181,253,.3);border-radius:8px;padding:6px 12px;font-size:11px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 20px)}
 /* SHARED */
 .tag{display:inline-block;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--green);margin-bottom:14px;line-height:1.5;font-style:normal}
-.h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,50px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:16px;color:var(--white)}
+.h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,50px);line-height:1.2;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:16px;color:var(--white)}
 .h2 .g{color:var(--green)}
 .ld{font-size:15px;color:var(--tb);line-height:1.8;max-width:540px}
 .rv{opacity:0;transition:opacity .7s ease}
@@ -166,7 +166,48 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
 .pf{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
 .pf li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--tb)}
 .pf li::before{content:'✓';color:var(--green);font-weight:700;font-size:12px;flex-shrink:0}
-/* CTA */
+/* COMO FUNCIONA - NOVO */
+.cf-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:center;margin-bottom:64px}
+.cf-card{background:rgba(255,255,255,.05);border:1px solid rgba(196,181,253,.15);border-radius:28px;padding:40px 32px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .3s,box-shadow .3s}
+.cf-card:hover{transform:translateY(-10px);border-color:rgba(200,255,0,.4);box-shadow:0 24px 60px rgba(109,40,217,.35)}
+.cf-card-mid{background:linear-gradient(145deg,rgba(109,40,217,.25),rgba(76,29,149,.15));border-color:rgba(196,181,253,.3)}
+.cf-card-mid:hover{border-color:rgba(196,181,253,.7);box-shadow:0 24px 60px rgba(124,58,237,.45)}
+.cf-num{position:absolute;top:20px;right:24px;font-family:'Syne',sans-serif;font-weight:800;font-size:72px;line-height:1;color:rgba(255,255,255,.04);pointer-events:none;user-select:none}
+.cf-icon-wrap{width:76px;height:76px;border-radius:22px;border:1.5px solid;display:flex;align-items:center;justify-content:center;margin-bottom:22px;transition:transform .3s}
+.cf-card:hover .cf-icon-wrap{transform:scale(1.1) rotate(-4deg)}
+.cf-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border-radius:100px;border:1px solid;margin-bottom:16px}
+.cf-title{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--white);margin-bottom:12px;line-height:1.3}
+.cf-desc{font-size:13.5px;color:var(--tb);line-height:1.8;margin-bottom:22px}
+.cf-cta{font-size:13px;font-weight:700;color:var(--green);letter-spacing:.04em;transition:gap .2s;display:inline-flex;align-items:center;gap:4px}
+.cf-cta:hover{gap:8px}
+.cf-arrow{font-size:28px;color:rgba(200,255,0,.3);text-align:center;padding:0 8px;flex-shrink:0}
+/* Barra de confiança */
+.cf-trust{display:flex;align-items:center;justify-content:center;gap:0;background:rgba(255,255,255,.04);border:1px solid rgba(196,181,253,.15);border-radius:20px;padding:28px 40px;flex-wrap:wrap}
+.cf-trust-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 36px;flex:1;min-width:120px}
+.cf-trust-num{font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--green);line-height:1;text-shadow:0 0 20px rgba(200,255,0,.4)}
+.cf-trust-label{font-size:11px;color:var(--tb);letter-spacing:.04em;text-transform:uppercase;font-weight:500;text-align:center}
+.cf-trust-div{width:1px;height:40px;background:rgba(255,255,255,.1);flex-shrink:0}
+@media(max-width:900px){.cf-grid{grid-template-columns:1fr;gap:16px}.cf-arrow{transform:rotate(90deg);font-size:22px;padding:4px 0}.cf-trust{gap:20px;padding:24px 20px}.cf-trust-div{width:40px;height:1px}}
+@media(max-width:520px){.cf-trust-item{padding:0 12px}.cf-trust-div{display:none}}
+/* FORMULÁRIO COTAÇÃO */
+.fq-section{background:var(--p2);padding:96px 0}
+.fq-inner{max-width:780px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.fq-box{background:rgba(255,255,255,.06);border:1px solid rgba(196,181,253,.25);border-radius:28px;padding:clamp(32px,5vw,56px);position:relative;overflow:hidden}
+.fq-box::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,.08) 0%,transparent 70%);pointer-events:none}
+.fq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+.fq-field{display:flex;flex-direction:column;gap:7px}
+.fq-field.full{grid-column:1/-1}
+.fq-label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--pl)}
+.fq-input,.fq-select,.fq-textarea{background:rgba(255,255,255,.07);border:1.5px solid rgba(196,181,253,.2);border-radius:12px;padding:13px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:var(--white);outline:none;transition:border-color .25s,background .25s;width:100%}
+.fq-input::placeholder,.fq-textarea::placeholder{color:rgba(255,255,255,.3)}
+.fq-input:focus,.fq-select:focus,.fq-textarea:focus{border-color:var(--green);background:rgba(200,255,0,.06)}
+.fq-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c4b5fd' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.fq-select option{background:#2e1065;color:#fff}
+.fq-textarea{resize:none;height:90px;line-height:1.6}
+.fq-btn{width:100%;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;letter-spacing:.04em;padding:18px 32px;border-radius:100px;border:none;cursor:pointer;transition:all .3s;box-shadow:0 8px 30px rgba(37,211,102,.3)}
+.fq-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 40px rgba(37,211,102,.5)}
+.fq-note{text-align:center;font-size:11px;color:var(--tf);margin-top:12px;letter-spacing:.04em}
+@media(max-width:600px){.fq-grid{grid-template-columns:1fr}.fq-field.full{grid-column:1}}
 .cs{padding:96px 24px;background:linear-gradient(135deg,var(--p2) 0%,var(--p1) 50%,var(--p2) 100%);text-align:center;position:relative;overflow:hidden}
 .cs::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.35) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
 .cin{position:relative;z-index:2;max-width:660px;margin:0 auto}
@@ -314,9 +355,9 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
 
 
 /* ── FLIP 3D SERVIÇOS ── */
-.svc-flip{perspective:1000px;background:transparent!important;border:none!important;padding:0!important}
-.svc-flip-inner{position:relative;width:100%;height:100%;min-height:320px;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.175,.885,.32,1.275)}
-.svc-flip:hover .svc-flip-inner{transform:rotateY(180deg)}
+.svc-flip{perspective:1000px;background:transparent!important;border:none!important;padding:0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.svc-flip-inner{position:relative;width:100%;height:100%;min-height:340px;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.175,.885,.32,1.275)}
+.svc-flip:hover .svc-flip-inner,.svc-flip.flipped .svc-flip-inner{transform:rotateY(180deg)}
 .svc-front,.svc-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;background:var(--cb);border:1px solid var(--cbr);}
 .svc-back{transform:rotateY(180deg);background:linear-gradient(135deg,var(--p3),var(--p1));border-color:rgba(200,255,0,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center}
 .svc-back .svc-ic{margin:0 auto 18px}
@@ -342,11 +383,11 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
 <div class="mq" aria-hidden="true"><div class="mq-t"><span>Passagens Aéreas</span><span>Hospedagens</span><span>Seguro Viagem</span><span>+3.000 Emissões</span><span>Consultoria Gratuita</span><span>Suporte 24h</span><span>Agência Certificada</span><span>Melhor Custo-Benefício</span><span>Passagens Aéreas</span><span>Hospedagens</span><span>Seguro Viagem</span><span>+3.000 Emissões</span><span>Consultoria Gratuita</span><span>Suporte 24h</span><span>Agência Certificada</span><span>Melhor Custo-Benefício</span></div></div>
 <nav class="nb" id="nav">
   <a href="#" class="nb-logo">AGÊNCIA DE VIAGENS</a>
-  <ul class="nb-ul"><li><a href="#sv">Serviços</a></li><li><a href="#ds">Destinos</a></li><li><a href="#wn">Por que nós</a></li><li><a href="#pk">Pacotes</a></li><li><a href="#dp">Clientes</a></li></ul>
-  <a href="https://wa.me/5500000000000" class="nb-btn" target="_blank">Falar Agora ✈</a>
+  <ul class="nb-ul"><li><a href="#sv">Serviços</a></li><li><a href="#ds">Destinos</a></li><li><a href="#wn">Por que nós</a></li><li><a href="#pk">Pacotes</a></li><li><a href="#cotacao">Cotação</a></li><li><a href="#dp">Clientes</a></li></ul>
+  <a href="https://wa.me/5581968899396" class="nb-btn" target="_blank">Falar Agora ✈</a>
   <button class="hbg" onclick="openM()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="mm" id="mm"><button class="mm-x" onclick="closeM()">✕</button><a href="#sv" onclick="closeM()">Serviços</a><a href="#ds" onclick="closeM()">Destinos</a><a href="#wn" onclick="closeM()">Por que nós</a><a href="#pk" onclick="closeM()">Pacotes</a><a href="#dp" onclick="closeM()">Clientes</a><a href="https://wa.me/5500000000000" target="_blank" style="color:var(--green)">WhatsApp ✈</a></div>
+<div class="mm" id="mm"><button class="mm-x" onclick="closeM()">✕</button><a href="#cotacao" onclick="closeM()">Cotação</a><a href="#sv" onclick="closeM()">Serviços</a><a href="#ds" onclick="closeM()">Destinos</a><a href="#wn" onclick="closeM()">Por que nós</a><a href="#pk" onclick="closeM()">Pacotes</a><a href="#dp" onclick="closeM()">Clientes</a><a href="https://wa.me/5581968899396" target="_blank" style="color:var(--green)">WhatsApp ✈</a></div>
 <section class="hero" id="inicio">
   <div class="sky-layer sky-night"></div>
   <div class="sky-layer sky-dawn"></div>
@@ -414,7 +455,7 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
     <h1 class="h1">FINDER<br/><span class="ac">TRAVEL</span></h1>
     <p class="sub">Do planejamento ao retorno, estamos com você em cada etapa. Consultoria gratuita, melhores preços e acompanhamento 24 horas.</p>
     <div class="ctas">
-      <a href="https://wa.me/5500000000000" class="btn-g" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultoria Gratuita</a>
+      <a href="https://wa.me/5581968899396" class="btn-g" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultoria Gratuita</a>
       <a href="#sv" class="btn-o">Nossos Serviços →</a>
     </div>
     <div class="stats">
@@ -426,106 +467,99 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
   </div>
   <div class="scrl"><div class="scrl-l"></div></div>
 </section>
-<!-- GALLERY -->
-<div class="gw">
-  <div class="gh rv"><span class="tag">Galeria de Destinos</span><h2 class="h2">Momentos <span class="g">Inesquecíveis</span></h2></div>
-  <div class="gt"><div class="gcd" onclick="openDestModal('Rio de Janeiro, Brasil')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=500&q=80" alt="Rio de Janeiro" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Rio de Janeiro, Brasil</div></div><div class="gcd" onclick="openDestModal('Maldivas')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldivas" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Maldivas</div></div><div class="gcd" onclick="openDestModal('Paris, França')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Paris, França</div></div><div class="gcd" onclick="openDestModal('Tóquio, Japão')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Tóquio" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Tóquio, Japão</div></div><div class="gcd" onclick="openDestModal('Dubai, EAU')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Dubai, EAU</div></div><div class="gcd" onclick="openDestModal('Santorini, Grécia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=500&q=80" alt="Santorini" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Santorini, Grécia</div></div><div class="gcd" onclick="openDestModal('Cancún, México')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80" alt="Cancún" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Cancún, México</div></div><div class="gcd" onclick="openDestModal('Fernando de Noronha')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80" alt="Fernando de Noronha" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Fernando de Noronha</div></div><div class="gcd" onclick="openDestModal('Buenos Aires, Argentina')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=500&q=80" alt="Buenos Aires" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Buenos Aires, Argentina</div></div><div class="gcd" onclick="openDestModal('Bali, Indonésia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Bali, Indonésia</div></div><div class="gcd" onclick="openDestModal('Rio de Janeiro, Brasil')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=500&q=80" alt="Rio de Janeiro" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Rio de Janeiro, Brasil</div></div><div class="gcd" onclick="openDestModal('Maldivas')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldivas" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Maldivas</div></div><div class="gcd" onclick="openDestModal('Paris, França')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Paris, França</div></div><div class="gcd" onclick="openDestModal('Tóquio, Japão')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Tóquio" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Tóquio, Japão</div></div><div class="gcd" onclick="openDestModal('Dubai, EAU')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Dubai, EAU</div></div><div class="gcd" onclick="openDestModal('Santorini, Grécia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=500&q=80" alt="Santorini" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Santorini, Grécia</div></div><div class="gcd" onclick="openDestModal('Cancún, México')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80" alt="Cancún" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Cancún, México</div></div><div class="gcd" onclick="openDestModal('Fernando de Noronha')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80" alt="Fernando de Noronha" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Fernando de Noronha</div></div><div class="gcd" onclick="openDestModal('Buenos Aires, Argentina')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=500&q=80" alt="Buenos Aires" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Buenos Aires, Argentina</div></div><div class="gcd" onclick="openDestModal('Bali, Indonésia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Bali, Indonésia</div></div></div>
-</div>
-<!-- COMO FUNCIONA -->
-<section style="background:var(--p3);padding:96px 0">
-  <div class="wrap">
-    <div style="text-align:center" class="rv"><span class="tag">Como Funciona</span><h2 class="h2">Simples assim,<br/><span class="g">em 3 passos</span></h2><p class="ld" style="margin:14px auto 0">Da consulta à decolagem, cuidamos de tudo por você.</p></div>
-    <div class="rv steps-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;margin:56px 0 72px">
-      <div class="step-connector" style="position:absolute;top:36px;left:calc(16.66% + 20px);right:calc(16.66% + 20px);height:2px;background:linear-gradient(90deg,var(--green),var(--pl));opacity:.4;pointer-events:none"></div>
-      <div style="text-align:center;padding:0 32px"><div class="step-icon" style="background:rgba(200,255,0,.12);border:2px solid var(--green)">💬</div><div class="step-num" style="font-style:normal;font-family:'Plus Jakarta Sans',sans-serif;color:var(--green)">Passo 01</div><div class="step-title">Fale com a gente</div><p class="step-desc">Entre em contato pelo WhatsApp e conte seus planos, destino e orçamento disponível.</p></div>
-      <div style="text-align:center;padding:0 32px"><div class="step-icon" style="background:rgba(124,58,237,.25);border:2px solid var(--pl)">🗺️</div><div class="step-num" style="font-style:normal;font-family:'Plus Jakarta Sans',sans-serif;color:var(--pl)">Passo 02</div><div class="step-title">Receba seu roteiro</div><p class="step-desc">Nossa equipe monta um roteiro personalizado com passagens, hospedagem e seguro.</p></div>
-      <div style="text-align:center;padding:0 32px"><div class="step-icon" style="background:rgba(200,255,0,.12);border:2px solid var(--green)">✈️</div><div class="step-num" style="font-style:normal;font-family:'Plus Jakarta Sans',sans-serif;color:var(--green)">Passo 03</div><div class="step-title">Embarque tranquilo</div><p class="step-desc">Com tudo confirmado, é só desfrutar com nosso suporte 24h durante toda a viagem.</p></div>
+<!-- FORMULÁRIO COTAÇÃO -->
+<section class="fq-section" id="cotacao">
+  <div class="fq-inner">
+    <div style="text-align:center;margin-bottom:0" class="rv">
+      <span class="tag">Cotação Gratuita</span>
+      <h2 class="h2">Monte sua <span class="g">viagem dos sonhos</span></h2>
+      <p class="ld" style="margin:12px auto 0">Preencha abaixo e receba sua cotação personalizada direto no WhatsApp em minutos.</p>
     </div>
-    <div style="text-align:center" class="rv"><span class="tag">Destinos Mais Procurados</span><h2 class="h2">Para onde nossos<br/><span class="g">clientes voam</span></h2></div>
-    <div class="rv dest-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px">
-      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80')"><div class="dest-img-overlay"></div><div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🇧🇷</div><div class="dest-name">Nacional</div><div class="dest-sub">Rio, SP, Nordeste, Sul...</div><div class="dest-cta">CONSULTAR →</div></div></div>
-      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80')"><div class="dest-img-overlay"></div><div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🌎</div><div class="dest-name">América</div><div class="dest-sub">EUA, Cancún, Buenos Aires...</div><div class="dest-cta">CONSULTAR →</div></div></div>
-      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80')"><div class="dest-img-overlay"></div><div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🌍</div><div class="dest-name">Europa</div><div class="dest-sub">Paris, Lisboa, Roma...</div><div class="dest-cta">CONSULTAR →</div></div></div>
-      <div class="dest-card dest-img" onclick="window.open('https://wa.me/5500000000000','_blank')" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80')"><div class="dest-img-overlay"></div><div class="dest-content"><div style="font-size:34px;margin-bottom:8px">🌏</div><div class="dest-name">Ásia & Oriente</div><div class="dest-sub">Dubai, Bali, Tóquio...</div><div class="dest-cta">CONSULTAR →</div></div></div>
-    </div>
-    <div class="rv" style="text-align:center;margin-top:48px"><a href="https://wa.me/5500000000000" class="btn-g" target="_blank" style="font-size:15px;padding:18px 40px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultar meu destino agora</a></div>
-  </div>
-</section>
-<!-- SERVICES -->
-<section style="background:var(--p2);padding:96px 0" id="sv">
-  <div class="wrap"><div style="text-align:center" class="rv"><span class="tag">O que oferecemos</span><h2 class="h2">Nossos <span class="g">Serviços</span></h2><p class="ld" style="margin:12px auto 0">Tudo que você precisa para uma viagem perfeita, em um só lugar.</p></div>
-  <div class="sg rv">
+    <div class="fq-box rv">
+      <div class="fq-grid">
 
-    <div class="svc svc-flip">
-      <div class="svc-flip-inner">
-        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="Passagens Aéreas"/></div><div class="svc-body"><div class="svc-ic">✈️</div><h3 class="svc-t">Passagens Aéreas</h3><p class="svc-d">Nacionais e internacionais com as melhores tarifas. Emissão rápida e segura.</p></div></div>
-        <div class="svc-back"><div class="svc-ic">✈️</div><h3>Passagens Aéreas</h3><p>Encontramos as melhores tarifas nacionais e internacionais com acompanhamento especializado do início ao fim.</p><a href="https://wa.me/5500000000000" target="_blank">Cotar agora →</a></div>
+        <div class="fq-field">
+          <label class="fq-label">Seu nome</label>
+          <input class="fq-input" id="fq-nome" type="text" placeholder="Ex: Maria Silva"/>
+        </div>
+
+        <div class="fq-field">
+          <label class="fq-label">Seu WhatsApp</label>
+          <input class="fq-input" id="fq-tel" type="tel" placeholder="(81) 99999-9999"/>
+        </div>
+
+        <div class="fq-field">
+          <label class="fq-label">Destino desejado</label>
+          <input class="fq-input" id="fq-destino" type="text" placeholder="Ex: Paris, Orlando, Noronha..."/>
+        </div>
+
+        <div class="fq-field">
+          <label class="fq-label">Tipo de viagem</label>
+          <select class="fq-select" id="fq-tipo">
+            <option value="">Selecione...</option>
+            <option>Nacional</option>
+            <option>Internacional</option>
+            <option>Lua de mel</option>
+            <option>Viagem em família</option>
+            <option>Viagem em grupo</option>
+            <option>Intercâmbio</option>
+          </select>
+        </div>
+
+        <div class="fq-field">
+          <label class="fq-label">Data de ida</label>
+          <input class="fq-input" id="fq-ida" type="date"/>
+        </div>
+
+        <div class="fq-field">
+          <label class="fq-label">Data de volta</label>
+          <input class="fq-input" id="fq-volta" type="date"/>
+        </div>
+
+        <div class="fq-field">
+          <label class="fq-label">Nº de passageiros</label>
+          <select class="fq-select" id="fq-pax">
+            <option value="">Selecione...</option>
+            <option>1 pessoa</option>
+            <option>2 pessoas</option>
+            <option>3 pessoas</option>
+            <option>4 pessoas</option>
+            <option>5 pessoas</option>
+            <option>6 ou mais pessoas</option>
+          </select>
+        </div>
+
+        <div class="fq-field">
+          <label class="fq-label">Orçamento aproximado</label>
+          <select class="fq-select" id="fq-orcamento">
+            <option value="">Selecione...</option>
+            <option>Até R$ 2.000</option>
+            <option>R$ 2.000 – R$ 5.000</option>
+            <option>R$ 5.000 – R$ 10.000</option>
+            <option>R$ 10.000 – R$ 20.000</option>
+            <option>Acima de R$ 20.000</option>
+            <option>Sem limite definido</option>
+          </select>
+        </div>
+
+        <div class="fq-field full">
+          <label class="fq-label">Observações (opcional)</label>
+          <textarea class="fq-textarea" id="fq-obs" placeholder="Ex: preciso de hotel incluso, viajo com criança de 3 anos, quero pacote completo..."></textarea>
+        </div>
+
+        <div class="fq-field full">
+          <button class="fq-btn" onclick="enviarCotacao()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar Cotação pelo WhatsApp
+          </button>
+          <p class="fq-note">✅ Gratuito · ⚡ Resposta em minutos · 🔒 Seus dados são confidenciais</p>
+        </div>
+
       </div>
-    </div>
-
-    <div class="svc svc-flip">
-      <div class="svc-flip-inner">
-        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hospedagens"/></div><div class="svc-body"><div class="svc-ic">🏨</div><h3 class="svc-t">Hospedagens</h3><p class="svc-d">Hotéis, pousadas e resorts selecionados para cada perfil de viajante.</p></div></div>
-        <div class="svc-back"><div class="svc-ic">🏨</div><h3>Hospedagens</h3><p>Do econômico ao mais luxuoso, selecionamos a hospedagem ideal para o seu estilo e orçamento.</p><a href="https://wa.me/5500000000000" target="_blank">Ver opções →</a></div>
-      </div>
-    </div>
-
-    <div class="svc svc-flip">
-      <div class="svc-flip-inner">
-        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="Seguro Viagem"/></div><div class="svc-body"><div class="svc-ic">🛡️</div><h3 class="svc-t">Seguro Viagem</h3><p class="svc-d">Viaje com proteção total. Cobertura médica, bagagem e cancelamento.</p></div></div>
-        <div class="svc-back"><div class="svc-ic">🛡️</div><h3>Seguro Viagem</h3><p>Cobertura completa para qualquer destino: médica, bagagem, cancelamento e muito mais. Viaje tranquilo.</p><a href="https://wa.me/5500000000000" target="_blank">Cotar seguro →</a></div>
-      </div>
-    </div>
-
-    <div class="svc svc-flip">
-      <div class="svc-flip-inner">
-        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Pacotes Completos"/></div><div class="svc-body"><div class="svc-ic">🗺️</div><h3 class="svc-t">Pacotes Completos</h3><p class="svc-d">Passagem + hotel + seguro em um pacote único e personalizado.</p></div></div>
-        <div class="svc-back"><div class="svc-ic">🗺️</div><h3>Pacotes Completos</h3><p>Planejamos cada detalhe da sua viagem dos sonhos — passagem, hotel, seguro e transfer — tudo incluso.</p><a href="https://wa.me/5500000000000" target="_blank">Ver pacotes →</a></div>
-      </div>
-    </div>
-
-    <div class="svc svc-flip">
-      <div class="svc-flip-inner">
-        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Consultoria Gratuita"/></div><div class="svc-body"><div class="svc-ic">💬</div><h3 class="svc-t">Consultoria Gratuita</h3><p class="svc-d">Atendimento personalizado de acordo com seu orçamento e destino.</p></div></div>
-        <div class="svc-back"><div class="svc-ic">💬</div><h3>Consultoria Gratuita</h3><p>Nossa equipe planeja a viagem perfeita para você — sem custo, sem compromisso. Só diga seus sonhos.</p><a href="https://wa.me/5500000000000" target="_blank">Falar agora →</a></div>
-      </div>
-    </div>
-
-    <div class="svc svc-flip">
-      <div class="svc-flip-inner">
-        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80" alt="Suporte 24 Horas"/></div><div class="svc-body"><div class="svc-ic">📱</div><h3 class="svc-t">Suporte 24 Horas</h3><p class="svc-d">Do planejamento ao retorno, sempre disponíveis para você.</p></div></div>
-        <div class="svc-back"><div class="svc-ic">📱</div><h3>Suporte 24 Horas</h3><p>Acompanhamento completo durante toda a sua viagem. Qualquer urgência, a qualquer hora, estamos aqui.</p><a href="https://wa.me/5500000000000" target="_blank">Entrar em contato →</a></div>
-      </div>
-    </div>
-
-  </div></div>
-</section>
-<!-- DESTINATIONS -->
-<section id="ds" style="background:var(--p3);padding:96px 0">
-  <div class="wrap"><div style="text-align:center" class="rv"><span class="tag">Para onde ir</span><h2 class="h2">Destinos <span class="g">Incríveis</span></h2><p class="ld" style="margin:12px auto 0">Explore os destinos mais desejados do mundo. Cada viagem é uma nova história.</p></div>
-  <div class="bn rv">
-    <div class="bc w t"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80" alt="Rio" loading="lazy"/><div class="bci"><div class="bcn">Rio de Janeiro</div><div class="bcs">Brasil · Nacional</div></div></div>
-    <div class="bc"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="bci"><div class="bcn">Paris</div><div class="bcs">França · Internacional</div></div></div>
-    <div class="bc"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=500&q=80" alt="Dubai" loading="lazy"/><div class="bci"><div class="bcn">Dubai</div><div class="bcs">Emirados · Internacional</div></div></div>
-    <div class="bc"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="bci"><div class="bcn">Bali</div><div class="bcs">Indonésia · Internacional</div></div></div>
-    <div class="bc"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Gramado" loading="lazy"/><div class="bci"><div class="bcn">Gramado</div><div class="bcs">Brasil · Nacional</div></div></div>
-    <div class="bc w"><img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?w=900&q=80" alt="NY" loading="lazy"/><div class="bci"><div class="bcn">Nova York</div><div class="bcs">EUA · Internacional</div></div></div>
-  </div></div>
-</section>
-<!-- WHY US -->
-<section style="background:var(--p2);padding:96px 0" id="wn">
-  <div class="wi">
-    <div class="wim rv"><img class="wia" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80" alt="Avião"/><img class="wib" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Praia"/><div class="wbdg"><big>+3.000</big>VIAGENS REALIZADAS</div></div>
-    <div class="rv"><span class="tag">Por que nos escolher</span><h2 class="h2">Viaje com<br/>quem <span class="g">entende</span></h2><p class="ld" style="margin-top:14px">A Finder Travel nasceu para simplificar cada etapa da sua jornada. Com experiência e dedicação, transformamos sonhos em realidade.</p>
-      <ul class="fl">
-        <li class="fi"><div class="fic">✅</div><div><div class="fit">Atendimento Personalizado</div><div class="fid">Suporte exclusivo para cada etapa da sua viagem, do planejamento ao retorno.</div></div></li>
-        <li class="fi"><div class="fic">💰</div><div><div class="fit">Melhor Custo-Benefício</div><div class="fid">Encontramos as melhores opções para sua viagem dos sonhos caber no orçamento.</div></div></li>
-        <li class="fi"><div class="fic">📱</div><div><div class="fit">Acompanhamento 24h</div><div class="fid">Nossa equipe está disponível a qualquer hora para qualquer emergência.</div></div></li>
-        <li class="fi"><div class="fic">🔒</div><div><div class="fit">Agência Certificada</div><div class="fid">Cadastro ativo. Segurança total em todas as transações e reservas.</div></div></li>
-      </ul>
     </div>
   </div>
 </section>
+
 <!-- TESTIMONIALS -->
 <section style="background:var(--p3);padding:96px 0" id="dp">
   <div class="wrap">
@@ -586,23 +620,180 @@ img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
     </div>
   </div>
 </section>
+<!-- COMO FUNCIONA -->
+<section style="background:var(--p3);padding:96px 0;position:relative;overflow:hidden">
+
+  <!-- fundo decorativo -->
+  <div style="position:absolute;inset:0;pointer-events:none;z-index:0">
+    <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(109,40,217,.18) 0%,transparent 70%);top:-100px;left:-150px"></div>
+    <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,.07) 0%,transparent 70%);bottom:-80px;right:-100px"></div>
+  </div>
+
+  <div class="wrap" style="position:relative;z-index:1">
+
+    <!-- Cabeçalho -->
+    <div style="text-align:center;margin-bottom:72px" class="rv">
+      <span class="tag">Como Funciona</span>
+      <h2 class="h2">Sua viagem em<br/><span class="g">Três passos simples</span></h2>
+      <p class="ld" style="margin:14px auto 0">Do sonho ao embarque — rápido, fácil e sem complicação.</p>
+    </div>
+
+    <!-- 3 cards grandes -->
+    <div class="cf-grid rv">
+
+      <!-- Passo 1 -->
+      <div class="cf-card">
+        <div class="cf-num">01</div>
+        <div class="cf-icon-wrap" style="background:linear-gradient(135deg,rgba(200,255,0,.2),rgba(200,255,0,.05));border-color:rgba(200,255,0,.4)">
+          <span style="font-size:36px">💬</span>
+        </div>
+        <div class="cf-badge" style="background:rgba(200,255,0,.15);color:var(--green);border-color:rgba(200,255,0,.3)">⚡ Resposta em 5 min</div>
+        <h3 class="cf-title">Fale com a gente</h3>
+        <p class="cf-desc">Manda uma mensagem pelo WhatsApp ou preenche a cotação acima. Conta o destino, as datas e o orçamento — a gente cuida do resto.</p>
+        <a href="https://wa.me/5581968899396" target="_blank" class="cf-cta">Falar agora →</a>
+      </div>
+
+      <!-- Seta entre cards -->
+      <div class="cf-arrow">→</div>
+
+      <!-- Passo 2 -->
+      <div class="cf-card cf-card-mid">
+        <div class="cf-num">02</div>
+        <div class="cf-icon-wrap" style="background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(124,58,237,.1));border-color:rgba(196,181,253,.5)">
+          <span style="font-size:36px">🗺️</span>
+        </div>
+        <div class="cf-badge" style="background:rgba(196,181,253,.15);color:var(--pl);border-color:rgba(196,181,253,.3)">✨ 100% personalizado</div>
+        <h3 class="cf-title">Receba seu roteiro</h3>
+        <p class="cf-desc">Nossa equipe monta um roteiro sob medida com passagens, hospedagem, seguro viagem e tudo que você precisa — pelo melhor preço.</p>
+        <a href="#cotacao" class="cf-cta" style="color:var(--pl)">Ver cotação →</a>
+      </div>
+
+      <!-- Seta entre cards -->
+      <div class="cf-arrow">→</div>
+
+      <!-- Passo 3 -->
+      <div class="cf-card">
+        <div class="cf-num">03</div>
+        <div class="cf-icon-wrap" style="background:linear-gradient(135deg,rgba(200,255,0,.2),rgba(200,255,0,.05));border-color:rgba(200,255,0,.4)">
+          <span style="font-size:36px">✈️</span>
+        </div>
+        <div class="cf-badge" style="background:rgba(200,255,0,.15);color:var(--green);border-color:rgba(200,255,0,.3)">🛡️ Suporte 24h</div>
+        <h3 class="cf-title">Embarque tranquilo</h3>
+        <p class="cf-desc">Com tudo confirmado, é só fazer as malas! A gente acompanha você do check-in ao retorno, disponível a qualquer hora.</p>
+        <a href="https://wa.me/5581968899396" target="_blank" class="cf-cta">Começar agora →</a>
+      </div>
+
+    </div>
+
+    <!-- Barra de diferenciais -->
+    <div class="cf-trust rv">
+      <div class="cf-trust-item"><span class="cf-trust-num">2h</span><span class="cf-trust-label">Emissão em até 2 horas</span></div>
+      <div class="cf-trust-div"></div>
+      <div class="cf-trust-item"><span class="cf-trust-num">12x</span><span class="cf-trust-label">Parcelamos sem juros</span></div>
+      <div class="cf-trust-div"></div>
+      <div class="cf-trust-item"><span class="cf-trust-num">+50</span><span class="cf-trust-label">Destinos disponíveis</span></div>
+      <div class="cf-trust-div"></div>
+      <div class="cf-trust-item"><span class="cf-trust-num">📲</span><span class="cf-trust-label">Atendimento via WhatsApp</span></div>
+    </div>
+
+  </div>
+</section>
+<!-- SERVICES -->
+<section style="background:var(--p2);padding:96px 0" id="sv">
+  <div class="wrap"><div style="text-align:center" class="rv"><span class="tag">O que oferecemos</span><h2 class="h2">Nossos <span class="g">Serviços</span></h2><p class="ld" style="margin:12px auto 0">Tudo que você precisa para uma viagem perfeita, em um só lugar.</p></div>
+  <div class="sg rv">
+
+    <div class="svc svc-flip">
+      <div class="svc-flip-inner">
+        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="Passagens Aéreas"/></div><div class="svc-body"><div class="svc-ic">✈️</div><h3 class="svc-t">Passagens Aéreas</h3><p class="svc-d">Nacionais e internacionais com as melhores tarifas. Emissão rápida e segura.</p></div></div>
+        <div class="svc-back"><div class="svc-ic">✈️</div><h3>Passagens Aéreas</h3><p>Encontramos as melhores tarifas nacionais e internacionais com acompanhamento especializado do início ao fim.</p><a href="https://wa.me/5581968899396" target="_blank">Cotar agora →</a></div>
+      </div>
+    </div>
+
+    <div class="svc svc-flip">
+      <div class="svc-flip-inner">
+        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hospedagens"/></div><div class="svc-body"><div class="svc-ic">🏨</div><h3 class="svc-t">Hospedagens</h3><p class="svc-d">Hotéis, pousadas e resorts selecionados para cada perfil de viajante.</p></div></div>
+        <div class="svc-back"><div class="svc-ic">🏨</div><h3>Hospedagens</h3><p>Do econômico ao mais luxuoso, selecionamos a hospedagem ideal para o seu estilo e orçamento.</p><a href="https://wa.me/5581968899396" target="_blank">Ver opções →</a></div>
+      </div>
+    </div>
+
+    <div class="svc svc-flip">
+      <div class="svc-flip-inner">
+        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="Seguro Viagem"/></div><div class="svc-body"><div class="svc-ic">🛡️</div><h3 class="svc-t">Seguro Viagem</h3><p class="svc-d">Viaje com proteção total. Cobertura médica, bagagem e cancelamento.</p></div></div>
+        <div class="svc-back"><div class="svc-ic">🛡️</div><h3>Seguro Viagem</h3><p>Cobertura completa para qualquer destino: médica, bagagem, cancelamento e muito mais. Viaje tranquilo.</p><a href="https://wa.me/5581968899396" target="_blank">Cotar seguro →</a></div>
+      </div>
+    </div>
+
+    <div class="svc svc-flip">
+      <div class="svc-flip-inner">
+        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Pacotes Completos"/></div><div class="svc-body"><div class="svc-ic">🗺️</div><h3 class="svc-t">Pacotes Completos</h3><p class="svc-d">Passagem + hotel + seguro em um pacote único e personalizado.</p></div></div>
+        <div class="svc-back"><div class="svc-ic">🗺️</div><h3>Pacotes Completos</h3><p>Planejamos cada detalhe da sua viagem dos sonhos — passagem, hotel, seguro e transfer — tudo incluso.</p><a href="https://wa.me/5581968899396" target="_blank">Ver pacotes →</a></div>
+      </div>
+    </div>
+
+    <div class="svc svc-flip">
+      <div class="svc-flip-inner">
+        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Consultoria Gratuita"/></div><div class="svc-body"><div class="svc-ic">💬</div><h3 class="svc-t">Consultoria Gratuita</h3><p class="svc-d">Atendimento personalizado de acordo com seu orçamento e destino.</p></div></div>
+        <div class="svc-back"><div class="svc-ic">💬</div><h3>Consultoria Gratuita</h3><p>Nossa equipe planeja a viagem perfeita para você — sem custo, sem compromisso. Só diga seus sonhos.</p><a href="https://wa.me/5581968899396" target="_blank">Falar agora →</a></div>
+      </div>
+    </div>
+
+    <div class="svc svc-flip">
+      <div class="svc-flip-inner">
+        <div class="svc-front svc-img"><div class="svc-thumb"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80" alt="Suporte 24 Horas"/></div><div class="svc-body"><div class="svc-ic">📱</div><h3 class="svc-t">Suporte 24 Horas</h3><p class="svc-d">Do planejamento ao retorno, sempre disponíveis para você.</p></div></div>
+        <div class="svc-back"><div class="svc-ic">📱</div><h3>Suporte 24 Horas</h3><p>Acompanhamento completo durante toda a sua viagem. Qualquer urgência, a qualquer hora, estamos aqui.</p><a href="https://wa.me/5581968899396" target="_blank">Entrar em contato →</a></div>
+      </div>
+    </div>
+
+  </div></div>
+</section>
+<!-- GALLERY -->
+<div class="gw">
+  <div class="gh rv"><span class="tag">Galeria de Destinos</span><h2 class="h2">Momentos <span class="g">Inesquecíveis</span></h2></div>
+  <div class="gt"><div class="gcd" onclick="openDestModal('Rio de Janeiro, Brasil')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=500&q=80" alt="Rio de Janeiro" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Rio de Janeiro, Brasil</div></div><div class="gcd" onclick="openDestModal('Maldivas')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldivas" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Maldivas</div></div><div class="gcd" onclick="openDestModal('Paris, França')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Paris, França</div></div><div class="gcd" onclick="openDestModal('Tóquio, Japão')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Tóquio" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Tóquio, Japão</div></div><div class="gcd" onclick="openDestModal('Dubai, EAU')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Dubai, EAU</div></div><div class="gcd" onclick="openDestModal('Santorini, Grécia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=500&q=80" alt="Santorini" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Santorini, Grécia</div></div><div class="gcd" onclick="openDestModal('Cancún, México')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80" alt="Cancún" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Cancún, México</div></div><div class="gcd" onclick="openDestModal('Fernando de Noronha')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80" alt="Fernando de Noronha" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Fernando de Noronha</div></div><div class="gcd" onclick="openDestModal('Buenos Aires, Argentina')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=500&q=80" alt="Buenos Aires" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Buenos Aires, Argentina</div></div><div class="gcd" onclick="openDestModal('Bali, Indonésia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Bali, Indonésia</div></div><div class="gcd" onclick="openDestModal('Rio de Janeiro, Brasil')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=500&q=80" alt="Rio de Janeiro" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Rio de Janeiro, Brasil</div></div><div class="gcd" onclick="openDestModal('Maldivas')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldivas" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Maldivas</div></div><div class="gcd" onclick="openDestModal('Paris, França')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Paris, França</div></div><div class="gcd" onclick="openDestModal('Tóquio, Japão')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Tóquio" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Tóquio, Japão</div></div><div class="gcd" onclick="openDestModal('Dubai, EAU')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Dubai, EAU</div></div><div class="gcd" onclick="openDestModal('Santorini, Grécia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=500&q=80" alt="Santorini" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Santorini, Grécia</div></div><div class="gcd" onclick="openDestModal('Cancún, México')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80" alt="Cancún" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Cancún, México</div></div><div class="gcd" onclick="openDestModal('Fernando de Noronha')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80" alt="Fernando de Noronha" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Fernando de Noronha</div></div><div class="gcd" onclick="openDestModal('Buenos Aires, Argentina')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=500&q=80" alt="Buenos Aires" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Buenos Aires, Argentina</div></div><div class="gcd" onclick="openDestModal('Bali, Indonésia')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="gcd-overlay"></div><div class="gcd-shine"></div><div class="gcl">Bali, Indonésia</div></div></div>
+</div><!-- DESTINATIONS -->
+<section id="ds" style="background:var(--p3);padding:96px 0">
+  <div class="wrap"><div style="text-align:center" class="rv"><span class="tag">Para onde ir</span><h2 class="h2">Destinos <span class="g">Incríveis</span></h2><p class="ld" style="margin:12px auto 0">Explore os destinos mais desejados do mundo. Cada viagem é uma nova história.</p></div>
+  <div class="bn rv">
+    <div class="bc w t"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80" alt="Rio" loading="lazy"/><div class="bci"><div class="bcn">Rio de Janeiro</div><div class="bcs">Brasil · Nacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris" loading="lazy"/><div class="bci"><div class="bcn">Paris</div><div class="bcs">França · Internacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=500&q=80" alt="Dubai" loading="lazy"/><div class="bci"><div class="bcn">Dubai</div><div class="bcs">Emirados · Internacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" loading="lazy"/><div class="bci"><div class="bcn">Bali</div><div class="bcs">Indonésia · Internacional</div></div></div>
+    <div class="bc"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Gramado" loading="lazy"/><div class="bci"><div class="bcn">Gramado</div><div class="bcs">Brasil · Nacional</div></div></div>
+    <div class="bc w"><img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?w=900&q=80" alt="NY" loading="lazy"/><div class="bci"><div class="bcn">Nova York</div><div class="bcs">EUA · Internacional</div></div></div>
+  </div></div>
+</section>
+<!-- WHY US -->
+<section style="background:var(--p2);padding:96px 0" id="wn">
+  <div class="wi">
+    <div class="wim rv"><img class="wia" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80" alt="Avião"/><img class="wib" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Praia"/><div class="wbdg"><big>+3.000</big>VIAGENS REALIZADAS</div></div>
+    <div class="rv"><span class="tag">Por que nos escolher</span><h2 class="h2">Viaje com<br/>quem <span class="g">entende</span></h2><p class="ld" style="margin-top:14px">A Finder Travel nasceu para simplificar cada etapa da sua jornada. Com experiência e dedicação, transformamos sonhos em realidade.</p>
+      <ul class="fl">
+        <li class="fi"><div class="fic">✅</div><div><div class="fit">Atendimento Personalizado</div><div class="fid">Suporte exclusivo para cada etapa da sua viagem, do planejamento ao retorno.</div></div></li>
+        <li class="fi"><div class="fic">💰</div><div><div class="fit">Melhor Custo-Benefício</div><div class="fid">Encontramos as melhores opções para sua viagem dos sonhos caber no orçamento.</div></div></li>
+        <li class="fi"><div class="fic">📱</div><div><div class="fit">Acompanhamento 24h</div><div class="fid">Nossa equipe está disponível a qualquer hora para qualquer emergência.</div></div></li>
+        <li class="fi"><div class="fic">🔒</div><div><div class="fit">Agência Certificada</div><div class="fid">Cadastro ativo. Segurança total em todas as transações e reservas.</div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
 <!-- PACKAGES -->
 <section style="background:var(--p2);padding:96px 0;text-align:center" id="pk">
   <div class="wrap"><div class="rv"><span class="tag">Nossos Pacotes</span><h2 class="h2">Escolha seu <span class="g">Pacote</span></h2><p class="ld" style="margin:12px auto 0">Pacotes personalizados para todo perfil de viajante. Todos com consultoria gratuita incluída.</p></div>
   <div class="pg rv">
-    <div class="pc"><div class="pn">Explorador</div><div class="pd">Ideal para turismo nacional com praticidade</div><ul class="pf"><li>Passagem aérea nacional</li><li>Hospedagem econômica selecionada</li><li>Seguro viagem básico</li><li>Suporte via WhatsApp</li></ul><a href="https://wa.me/5500000000000" class="btn-o" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
-    <div class="pc hot"><div class="pbdg">Mais Popular</div><div class="pn">Viajante</div><div class="pd">Completo para viagens nacionais e internacionais</div><ul class="pf"><li>Passagem nacional ou internacional</li><li>Hospedagem selecionada por especialistas</li><li>Seguro viagem completo</li><li>Suporte 24h dedicado</li><li>Transfer no destino</li></ul><a href="https://wa.me/5500000000000" class="btn-g" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
-    <div class="pc"><div class="pn">Premium</div><div class="pd">Experiência exclusiva para quem exige o melhor</div><ul class="pf"><li>Passagens internacionais premium</li><li>Hotéis e resorts 4 e 5 estrelas</li><li>Seguro viagem premium total</li><li>Concierge exclusivo 24h</li><li>Roteiro personalizado completo</li></ul><a href="https://wa.me/5500000000000" class="btn-o" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
+    <div class="pc"><div class="pn">Explorador</div><div class="pd">Ideal para turismo nacional com praticidade</div><ul class="pf"><li>Passagem aérea nacional</li><li>Hospedagem econômica selecionada</li><li>Seguro viagem básico</li><li>Suporte via WhatsApp</li></ul><a href="https://wa.me/5581968899396" class="btn-o" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
+    <div class="pc hot"><div class="pbdg">Mais Popular</div><div class="pn">Viajante</div><div class="pd">Completo para viagens nacionais e internacionais</div><ul class="pf"><li>Passagem nacional ou internacional</li><li>Hospedagem selecionada por especialistas</li><li>Seguro viagem completo</li><li>Suporte 24h dedicado</li><li>Transfer no destino</li></ul><a href="https://wa.me/5581968899396" class="btn-g" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
+    <div class="pc"><div class="pn">Premium</div><div class="pd">Experiência exclusiva para quem exige o melhor</div><ul class="pf"><li>Passagens internacionais premium</li><li>Hotéis e resorts 4 e 5 estrelas</li><li>Seguro viagem premium total</li><li>Concierge exclusivo 24h</li><li>Roteiro personalizado completo</li></ul><a href="https://wa.me/5581968899396" class="btn-o" style="width:100%;justify-content:center" target="_blank">Solicitar Orçamento →</a></div>
   </div></div>
 </section>
 <!-- CTA -->
-<section class="cs"><div class="cin rv"><h2 class="ch2">Pronto para<br/><span class="g">Embarcar?</span></h2><p class="cp">Fale com nossa equipe agora e receba uma consultoria gratuita. Vamos planejar a viagem dos seus sonhos juntos!</p><a href="https://wa.me/5500000000000" class="wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultoria Gratuita pelo WhatsApp</a><p class="cn">Respondemos em até 5 minutos · Sem compromisso · 100% Gratuito</p></div></section>
+<section class="cs"><div class="cin rv"><h2 class="ch2">Pronto para<br/><span class="g">Embarcar?</span></h2><p class="cp">Fale com nossa equipe agora e receba uma consultoria gratuita. Vamos planejar a viagem dos seus sonhos juntos!</p><a href="https://wa.me/5581968899396" class="wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Consultoria Gratuita pelo WhatsApp</a><p class="cn">Respondemos em até 5 minutos · Sem compromisso · 100% Gratuito</p></div></section>
 <!-- FOOTER -->
 <footer class="fw"><div class="fw-bg"></div><div class="wrap"><div class="fgd">
-  <div class="fb"><div class="fbn">FINDER <span>TRAVEL</span></div><p>Agência de viagens certificada. Transformamos sonhos em realidade com atendimento personalizado, melhores preços e suporte 24 horas.</p><div class="socs"><a class="soc" href="https://instagram.com/agenciafindertravel" target="_blank" title="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="soc" href="https://wa.me/5500000000000" target="_blank" title="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div></div>
+  <div class="fb"><div class="fbn">FINDER <span>TRAVEL</span></div><p>Agência de viagens certificada. Transformamos sonhos em realidade com atendimento personalizado, melhores preços e suporte 24 horas.</p><div class="socs"><a class="soc" href="https://instagram.com/agenciafindertravel" target="_blank" title="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="soc" href="https://wa.me/5581968899396" target="_blank" title="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div></div>
   <div class="fc"><h4>Serviços</h4><ul><li><a href="#">Passagens Aéreas</a></li><li><a href="#">Hospedagens</a></li><li><a href="#">Seguro Viagem</a></li><li><a href="#">Pacotes Completos</a></li><li><a href="#">Consultoria</a></li></ul></div>
   <div class="fc"><h4>Destinos</h4><ul><li><a href="#">Brasil</a></li><li><a href="#">América do Sul</a></li><li><a href="#">Europa</a></li><li><a href="#">América do Norte</a></li><li><a href="#">Ásia & Oceania</a></li></ul></div>
-  <div class="fc"><h4>Links Úteis</h4><ul><li><a href="https://wa.me/5500000000000" target="_blank">WhatsApp</a></li><li><a href="https://instagram.com/agenciafindertravel" target="_blank">Instagram</a></li><li><a href="#">Grupo de Promoções</a></li><li><a href="#">Solicitar Orçamento</a></li><li><a href="#">Cadastro</a></li></ul></div>
+  <div class="fc"><h4>Links Úteis</h4><ul><li><a href="https://wa.me/5581968899396" target="_blank">WhatsApp</a></li><li><a href="https://instagram.com/agenciafindertravel" target="_blank">Instagram</a></li><li><a href="#">Grupo de Promoções</a></li><li><a href="#">Solicitar Orçamento</a></li><li><a href="#">Cadastro</a></li></ul></div>
 </div><div class="fb2"><span>© 2025 Finder Travel · Todos os direitos reservados · Cadastro ativo</span><span>Feito com ✈ para viajantes apaixonados</span></div></div></footer>
 <script>
 const nav=document.getElementById('nav');
@@ -616,7 +807,7 @@ const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){count
 document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
 var modalData = {"Rio de Janeiro, Brasil":["https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&q=80","https://images.unsplash.com/photo-1548963670-c68e52db0e43?w=800&q=80","https://images.unsplash.com/photo-1594735558559-45e4e8c8c5c3?w=800&q=80","https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?w=800&q=80","https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&q=80"],"Maldivas":["https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80","https://images.unsplash.com/photo-1540202404-d0a196e9f8d3?w=800&q=80","https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80","https://images.unsplash.com/photo-1621293954908-907159247fc8?w=800&q=80","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"],"Paris, França":["https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80","https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=800&q=80","https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80","https://images.unsplash.com/photo-1471623432079-b009d30b6729?w=800&q=80","https://images.unsplash.com/photo-1543349689-9a4d426bee8e?w=800&q=80"],"Tóquio, Japão":["https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80","https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80","https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=80","https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?w=800&q=80","https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80"],"Dubai, EAU":["https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80","https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80","https://images.unsplash.com/photo-1548051290-6b10a3b60ed9?w=800&q=80","https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80","https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=800&q=80"],"Santorini, Grécia":["https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80","https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80","https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80","https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&q=80","https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?w=800&q=80"],"Cancún, México":["https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80","https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80","https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80","https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80"],"Fernando de Noronha":["https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80","https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80","https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80","https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80","https://images.unsplash.com/photo-1528543606781-2f6e8759bc09?w=800&q=80"],"Buenos Aires, Argentina":["https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&q=80","https://images.unsplash.com/photo-1552432552-06c5b8629b7a?w=800&q=80","https://images.unsplash.com/photo-1568454537842-d933259bb258?w=800&q=80","https://images.unsplash.com/photo-1546877625-cb8c71916608?w=800&q=80","https://images.unsplash.com/photo-1476081718849-3aedb56e6c5e?w=800&q=80"],"Bali, Indonésia":["https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80","https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80","https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?w=800&q=80","https://images.unsplash.com/photo-1518548235786-ca72aa4ee1e6?w=800&q=80","https://images.unsplash.com/photo-1584810359583-96fc3448beaa?w=800&q=80"]};
 var modalCurrent=0,modalImgs=[],modalDest='';
-function openDestModal(dest){modalDest=dest;modalImgs=modalData[dest]||[];modalCurrent=0;document.getElementById('modal-title').textContent=dest;document.getElementById('modal-tag').textContent='DESTINO';document.getElementById('modal-wa').href='https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20em%20uma%20viagem%20para%20'+encodeURIComponent(dest)+'.%20Podem%20me%20ajudar?';var thumbs=document.getElementById('modal-thumbs');thumbs.innerHTML='';modalImgs.forEach(function(url,i){var t=document.createElement('img');t.src=url;t.id='modal-thumb-'+i;t.style.cssText='width:80px;height:58px;object-fit:cover;border-radius:10px;cursor:pointer;transition:all .25s;opacity:.6;border:2px solid transparent;flex-shrink:0';t.onclick=function(){setModalImg(i);};t.onmouseover=function(){if(i!==modalCurrent)this.style.opacity='0.9';};t.onmouseout=function(){if(i!==modalCurrent)this.style.opacity='0.6';};thumbs.appendChild(t);});setModalImg(0);var modal=document.getElementById('dest-modal');modal.style.display='flex';modal.style.animation='modalIn .3s ease';document.body.style.overflow='hidden';}
+function openDestModal(dest){modalDest=dest;modalImgs=modalData[dest]||[];modalCurrent=0;document.getElementById('modal-title').textContent=dest;document.getElementById('modal-tag').textContent='DESTINO';document.getElementById('modal-wa').href='https://wa.me/5581968899396?text=Ol%C3%A1!%20Tenho%20interesse%20em%20uma%20viagem%20para%20'+encodeURIComponent(dest)+'.%20Podem%20me%20ajudar?';var thumbs=document.getElementById('modal-thumbs');thumbs.innerHTML='';modalImgs.forEach(function(url,i){var t=document.createElement('img');t.src=url;t.id='modal-thumb-'+i;t.style.cssText='width:80px;height:58px;object-fit:cover;border-radius:10px;cursor:pointer;transition:all .25s;opacity:.6;border:2px solid transparent;flex-shrink:0';t.onclick=function(){setModalImg(i);};t.onmouseover=function(){if(i!==modalCurrent)this.style.opacity='0.9';};t.onmouseout=function(){if(i!==modalCurrent)this.style.opacity='0.6';};thumbs.appendChild(t);});setModalImg(0);var modal=document.getElementById('dest-modal');modal.style.display='flex';modal.style.animation='modalIn .3s ease';document.body.style.overflow='hidden';}
 function setModalImg(idx){modalCurrent=idx;var img=document.getElementById('modal-main-img');img.style.opacity='0';setTimeout(function(){img.src=modalImgs[idx];img.style.opacity='1';},150);document.getElementById('modal-counter').textContent=(idx+1)+' / '+modalImgs.length;modalImgs.forEach(function(_,i){var t=document.getElementById('modal-thumb-'+i);if(!t)return;if(i===idx){t.style.opacity='1';t.style.border='2px solid #c8ff00';t.style.transform='scale(1.08)';}else{t.style.opacity='0.6';t.style.border='2px solid transparent';t.style.transform='scale(1)';}});}
 function modalNext(){setModalImg((modalCurrent+1)%modalImgs.length);}
 function modalPrev(){setModalImg((modalCurrent-1+modalImgs.length)%modalImgs.length);}
@@ -624,7 +815,61 @@ function closeDestModal(){document.getElementById('dest-modal').style.display='n
 document.addEventListener('DOMContentLoaded',function(){var modal=document.getElementById('dest-modal');if(modal){modal.addEventListener('click',function(e){if(e.target===this)closeDestModal();});}});
 document.addEventListener('keydown',function(e){if(document.getElementById('dest-modal').style.display==='flex'){if(e.key==='ArrowRight')modalNext();if(e.key==='ArrowLeft')modalPrev();if(e.key==='Escape')closeDestModal();}});
 
-// ── PAUSE/RESUME colunas de depoimentos ──
+// ── FORMULÁRIO COTAÇÃO ──
+function enviarCotacao(){
+  var nome     = document.getElementById('fq-nome').value.trim();
+  var tel      = document.getElementById('fq-tel').value.trim();
+  var destino  = document.getElementById('fq-destino').value.trim();
+  var tipo     = document.getElementById('fq-tipo').value;
+  var ida      = document.getElementById('fq-ida').value;
+  var volta    = document.getElementById('fq-volta').value;
+  var pax      = document.getElementById('fq-pax').value;
+  var orc      = document.getElementById('fq-orcamento').value;
+  var obs      = document.getElementById('fq-obs').value.trim();
+
+  if(!nome || !destino){
+    alert('Por favor, preencha pelo menos seu nome e o destino desejado.');
+    return;
+  }
+
+  function fmtDate(d){ if(!d) return 'Não informado'; var p=d.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
+
+  var msg = '🌍 *SOLICITAÇÃO DE COTAÇÃO — FINDER TRAVEL*\n\n'
+    + '👤 *Nome:* ' + nome + '\n'
+    + '📱 *WhatsApp:* ' + (tel||'Não informado') + '\n'
+    + '✈️ *Destino:* ' + destino + '\n'
+    + '🗂️ *Tipo:* ' + (tipo||'Não informado') + '\n'
+    + '📅 *Ida:* ' + fmtDate(ida) + '\n'
+    + '📅 *Volta:* ' + fmtDate(volta) + '\n'
+    + '👥 *Passageiros:* ' + (pax||'Não informado') + '\n'
+    + '💰 *Orçamento:* ' + (orc||'Não informado') + '\n'
+    + (obs ? '📝 *Obs:* ' + obs + '\n' : '')
+    + '\nAguardo o retorno! 😊';
+
+  var url = 'https://wa.me/5581968899396?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+// ── FLIP 3D TOUCH (mobile) ──
+document.querySelectorAll('.svc-flip').forEach(function(card){
+  // Toque no card — vira
+  card.addEventListener('touchend', function(e){
+    e.preventDefault();
+    var isFlipped = card.classList.contains('flipped');
+    // Fechar todos os outros
+    document.querySelectorAll('.svc-flip').forEach(function(c){ c.classList.remove('flipped'); });
+    // Se não estava virado, vira agora
+    if(!isFlipped) card.classList.add('flipped');
+  }, {passive:false});
+});
+
+// Toque fora de qualquer card — fecha todos
+document.addEventListener('touchend', function(e){
+  if(!e.target.closest('.svc-flip')){
+    document.querySelectorAll('.svc-flip').forEach(function(c){ c.classList.remove('flipped'); });
+  }
+}, {passive:true});
+
 document.querySelectorAll('.tg-col').forEach(function(col){
   var inner = col.querySelector('.tg-col-inner');
   if(!inner) return;
